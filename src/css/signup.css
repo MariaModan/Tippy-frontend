@@ -1,0 +1,36 @@
+.signupFormContainer {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signupFormContainer > form{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.signupFormContainer form >input {
+    margin-bottom: 0.5em;
+    line-height: 1.5em;
+}
+
+.signupFormContainer form > button {
+    height:2em;
+}
+
+/* Redirect to signin */
+.signinRedirect {
+    margin-top:2em;
+    display: flex;
+}
+
+.signinRedirect > p {
+    padding-right: 1em;
+}
+
+.signinRedirect > button  {
+    height: 2em;
+    align-self: center;
+    width: 6em;
+}

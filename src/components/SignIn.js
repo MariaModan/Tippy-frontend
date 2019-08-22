@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/signin.css';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class SignIn extends React.Component {
 
     render() {
         return(
-            <div className='form-container'>
+            <div className='formContainer'>
                     <h1>Sign In</h1>
                     <form >
                         <label htmlFor='email'/>
@@ -52,13 +53,13 @@ class SignIn extends React.Component {
                             className='signInBtn btn' 
                             onClick={this.onSubmitSignIn}>Sign in</button>
                     </form>
-                    <p>Don't have an account?</p>
-                    <button 
-                        className='regBtn btn'
-                        onClick={()=>this.props.onRouteChange('signup')}>
-                        Sign up now
-                    </button>
-                    
+                    <div className='signupRedirect'>
+                        <p>Don't have an account?</p>
+                        <button 
+                            onClick={()=>this.props.onRouteChange('signup')}>
+                            Sign up now
+                        </button>
+                    </div>   
                 </div> 
         )
     } 

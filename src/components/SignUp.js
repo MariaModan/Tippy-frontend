@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/signup.css';
 
 class SignUp extends React.Component {
     constructor (props) {
@@ -34,7 +35,7 @@ class SignUp extends React.Component {
 
     render(){
         return(
-            <div className='reg-form-container'>
+            <div className='signupFormContainer'>
                     <h1>Sign up</h1>
                     <form >
                         <label htmlFor='name'/>
@@ -67,11 +68,13 @@ class SignUp extends React.Component {
                             className='signUpBtn btn' 
                             onClick={this.onSubmitRegister}>Sign up</button>
                     </form>
-                    <p>Already have an account?</p>
-                    <button 
-                        className='regSignInBtn btn'
-                        onClick={()=>this.props.onRouteChange('signin')}>
-                        Sign in</button>
+                    <dev className='signinRedirect'>
+                        <p>Already have an account?</p>
+                        <button 
+                            onClick={()=>this.props.onRouteChange('signin')}>
+                            Sign in</button>
+                    </dev>
+                    
                 </div> 
         )
     }

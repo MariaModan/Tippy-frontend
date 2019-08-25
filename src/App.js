@@ -1,21 +1,37 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import Home from './components/Home';
 
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      route: 'signin'
-    }
+      route: 'signin',
+      user: {}
+    }  
   }
 
   onRouteChange = (newRoute) => {
     this.setState({
-      route: newRoute
+      route: newRoute,
     })
+  }
+
+  loadUser = (user) => {
+    this.setState({
+      user: user,
+      route: 'home'
+    })
+  }
+
+  signOutUser = () => {
+    this.setState({
+      user: {},
+      route: 'signin'
+    })
+    
   }
 
   renderRouteSwitch = (route) => {
@@ -23,19 +39,17 @@ class App extends React.Component {
       case 'home':
         return (
           <div>
-            <Header route={this.state.route}/>
+            <Home user={this.state.user} signOutUser={this.signOutUser}/>
           </div>)
       case 'signup':
           return (
             <div>
-              <Header route={this.state.route}/>
-              <SignUp onRouteChange={this.onRouteChange}/>
+              <SignUp onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
             </div>)
       default: 
         return (
           <div>
-            <Header route={this.state.route}/>
-            <SignIn onRouteChange={this.onRouteChange}/>
+            <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
           </div>)
     }
   }

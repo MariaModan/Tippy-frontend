@@ -31,11 +31,36 @@ class SignUp extends React.Component {
 
     onSubmitRegister = (ev) => {
         ev.preventDefault();
+
+        const reqBody = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        fetch('http://localhost:5500/signup',{
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(reqBody)
+        })
+            .then(response => response.json())
+            .then( user => {
+                if(user.userid){
+                    this.props.loadUser(user)
+                }
+            })
+            .catch(err =>  console.log('error signing up user'))
     }
 
     render(){
         return(
-            <div className='signupFormContainer'>
+            <div>
+                <header>
+                    <h1>Thank you for choosing Tippy</h1>
+                    <p>We provide the best way for you to keep track of those projects' to-do lists</p>
+                    <p>Sign up for an accunt below </p>
+                </header>
+                <div className='signupFormContainer'>
                     <h1>Sign up</h1>
                     <form >
                         <label htmlFor='name'/>
@@ -68,14 +93,15 @@ class SignUp extends React.Component {
                             className='signUpBtn btn' 
                             onClick={this.onSubmitRegister}>Sign up</button>
                     </form>
-                    <dev className='signinRedirect'>
+                    <div className='signinRedirect'>
                         <p>Already have an account?</p>
                         <button 
                             onClick={()=>this.props.onRouteChange('signin')}>
                             Sign in</button>
-                    </dev>
+                    </div>
                     
                 </div> 
+            </div>
         )
     }
 }

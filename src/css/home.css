@@ -1,0 +1,7 @@
+.signOut {
+    text-decoration: underline;
+}
+
+.signOut:hover {
+    cursor: pointer;
+}

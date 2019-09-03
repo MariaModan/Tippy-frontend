@@ -15,7 +15,7 @@ class ProjectsInfo extends Component {
                         Add Project
                     </button>
                 <SearchProject />
-                <ProjectList loadProject={this.props.loadProject}/>                
+                <ProjectList loadProject={this.props.loadProject} userid={this.props.userid}/>                
             </div>
         )
     }

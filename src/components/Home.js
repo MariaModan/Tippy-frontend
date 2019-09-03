@@ -55,7 +55,7 @@ class Home extends React.Component {
                 <div className='home-bg'></div>
                 <div className='home-container'>
                     <UserInfo user={this.props.user}/>
-                    <ProjectsInfo loadProject={this.loadProject} openAddProject={this.openAddProject}/>
+                    <ProjectsInfo loadProject={this.loadProject} openAddProject={this.openAddProject} userid={this.props.user.userid}/>
                     {this.renderWindowSwitch()}
                 </div>
             </div>

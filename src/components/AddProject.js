@@ -20,7 +20,6 @@ class AddProject extends Component {
             projectTitle: this.state.projectTitle,
             userid: this.props.user.userid
         });
-        console.log(body)
         //TO DO
         //add verification that there is project name, otherwise return
         fetch('http://localhost:5500/addproject', {
@@ -29,7 +28,8 @@ class AddProject extends Component {
             body: body
         }).then( res => res.json())
         .then( projectid => {
-            this.props.loadProject(projectid, this.state.projectTitle)
+            this.props.loadProject(projectid, this.state.projectTitle);
+            this.props.getProjectList();
         })
     }
 

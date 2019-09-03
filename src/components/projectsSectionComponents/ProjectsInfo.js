@@ -4,6 +4,10 @@ import ProjectList from './ProjectList';
 import icon from '../../img/add-project-icon.svg';
 
 class ProjectsInfo extends Component {
+    componentDidMount(){
+        this.props.getProjectList()
+    }
+    
     render() {
         return (
             <div className='projectsinfo-container'>
@@ -15,7 +19,7 @@ class ProjectsInfo extends Component {
                         Add Project
                     </button>
                 <SearchProject />
-                <ProjectList loadProject={this.props.loadProject} userid={this.props.userid}/>                
+                <ProjectList loadProject={this.props.loadProject} projectList={this.props.projectList}/>                
             </div>
         )
     }

@@ -10,8 +10,8 @@ class App extends React.Component {
     this.state = {
       route: 'home',
       user: {
-        name: 'Maria',
-        userid: 3
+        name: 'Test',
+        userid: 8
       }
     }  
   }

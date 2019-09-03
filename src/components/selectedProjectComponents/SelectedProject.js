@@ -30,8 +30,8 @@ class SelectedProject extends Component {
         return (
             <div className='selected-project'>
                 <header>{this.props.project.projectTitle}</header>
-                <AddTodo />
                 <div className='project-container'>
+                    <AddTodo />
                     <Todo todoList={this.state.todoList}/>
                     <InProgress inProgressList={this.state.inProgressList}/>
                     <Finished finishedList={this.state.finishedList}/>

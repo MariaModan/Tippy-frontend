@@ -80,6 +80,7 @@
     vertical-align: middle;
 }
 
+
 .search-project {
     display: flex;
     height: 1.5em;
@@ -101,6 +102,38 @@
     line-height: 2em;
     font-size: 1.3em;
     cursor: pointer;
+}
+
+/* Add project section */
+
+
+.add-project-container {
+    background: #fff;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 8;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-project-container > h1 {
+    margin-top: 5em;
+}
+
+.add-project-container > form {
+    display: grid;
+    grid-template-columns: 1fr 400px 1fr;
+    grid-gap: 0.5em;
+    text-align: left;
+}
+
+.add-project-container > form > label, textarea, button {
+    grid-column: 2;
+}
+
+.add-project-container > form > label > input {
+    margin-left: 1em;
+    grid-column-end: 3;
 }
 
 /* Quote section */
@@ -141,10 +174,11 @@
 }
 
 .add-todo {
-    margin-top: 1em;
     text-align: left;
-    margin-left: 2em;
     height: 1.5em;
+    grid-column: 1/4;
+    grid-row: 1/2;
+    display:flex;
 }
 
 .add-todo > input {
@@ -160,6 +194,7 @@
     display: grid;
     height: 85%;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5% 95%;
     grid-gap: 1em;
     padding: 2em;
 }

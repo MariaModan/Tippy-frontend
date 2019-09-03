@@ -7,7 +7,13 @@ class ProjectsInfo extends Component {
     render() {
         return (
             <div className='projectsinfo-container'>
-                <button type='button' className='add-project-btn'><img src={icon} alt='add project icon' /> Add Project</button>
+                <button 
+                    type='button' 
+                    className='add-project-btn'
+                    onClick={this.props.openAddProject}>
+                        <img src={icon} alt='add project icon' /> 
+                        Add Project
+                    </button>
                 <SearchProject />
                 <ProjectList loadProject={this.props.loadProject}/>                
             </div>

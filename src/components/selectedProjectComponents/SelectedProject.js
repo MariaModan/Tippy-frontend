@@ -12,7 +12,7 @@ class SelectedProject extends Component {
                 { taskTitle:'first task', 
                  taskId: 2},
                 {taskTitle:'second task',
-                taskId: 2}],
+                taskId: 22}],
             inProgressList: [
                 {taskTitle:'third task',
                 taskId: 3}],
@@ -31,7 +31,7 @@ class SelectedProject extends Component {
             <div className='selected-project'>
                 <header>{this.props.project.projectTitle}</header>
                 <div className='project-container'>
-                    <AddTodo />
+                    <AddTodo projectid={this.props.project.projectId} userid={this.props.userid}/>
                     <Todo todoList={this.state.todoList}/>
                     <InProgress inProgressList={this.state.inProgressList}/>
                     <Finished finishedList={this.state.finishedList}/>

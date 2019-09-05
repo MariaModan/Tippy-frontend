@@ -20,7 +20,7 @@ class Home extends React.Component {
     renderWindowSwitch = () => {
         switch(this.state.rightWindow){
             case 'selectedProject':
-                return <SelectedProject project={this.state.selectedProject}/>
+                return <SelectedProject project={this.state.selectedProject} userid={this.props.user.userid}/>
             case 'addProject':
                 return <AddProject loadProject={this.loadProject} user={this.props.user} getProjectList={this.getProjectList}/>
             default:

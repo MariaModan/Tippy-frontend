@@ -21,6 +21,10 @@ class AddTodo extends Component {
             userid: this.props.userid,
             task_title: this.state.newTask
         })
+
+        this.setState({
+            newTask: ''
+        })
         
         fetch('http://localhost:5500/addtodo', {
             method: 'post',
@@ -28,14 +32,16 @@ class AddTodo extends Component {
             body: body
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            this.props.loadTodoList(this.props.projectid);
+        })
         .catch(err => console.log(err))
     }
 
     render() {
         return (
             <form className='add-todo' onSubmit={this.addTodo}>
-                <input placeholder=' Add task...' onChange={this.onInputChange}></input>
+                <input placeholder=' Add task...' value={this.state.newTask} onChange={this.onInputChange}></input>
                 <button type='submit'>Add</button>
             </form>
         )

@@ -20,7 +20,7 @@ class Home extends React.Component {
     renderWindowSwitch = () => {
         switch(this.state.rightWindow){
             case 'selectedProject':
-                return <SelectedProject project={this.state.selectedProject} userid={this.props.user.userid}/>
+                return <SelectedProject project={this.state.selectedProject} userid={this.props.user.userid} loadTodoList={this.loadTodoList}/>
             case 'addProject':
                 return <AddProject loadProject={this.loadProject} user={this.props.user} getProjectList={this.getProjectList}/>
             default:
@@ -29,12 +29,43 @@ class Home extends React.Component {
     }
 
     loadProject = (projectId, projectTitle) => {
+        const body = JSON.stringify({
+            projectid: projectId
+        });
+
+        fetch('http://localhost:5500/listtodo', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(todos => {
         this.setState({
             rightWindow: 'selectedProject',
             selectedProject:{
                 projectId: projectId,
                 projectTitle: projectTitle,
+                todoList: todos
             }
+        })
+    })
+}
+
+    loadTodoList = (projectid) => {
+        const body = JSON.stringify({
+            projectid: projectid
+        });
+
+        fetch('http://localhost:5500/listtodo', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(todos => {
+            this.setState({
+                selectedProject: {...this.state.selectedProject, todoList: todos}                
+            })
         })
     }
 

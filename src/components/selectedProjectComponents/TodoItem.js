@@ -4,7 +4,7 @@ class TodoItem extends Component {
     render() {
         return (
             <div>
-                <input type='checkbox'></input>{this.props.title}
+                <input type='checkbox' onClick={this.props.addToSelectedTasks.bind(this, this.props.taskid, this.props.title)}></input>{this.props.title}
             </div>
         )
     }

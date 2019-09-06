@@ -13,8 +13,15 @@ class SelectedProject extends Component {
             <div className='selected-project'>
                 <header>{this.props.project.projectTitle}</header>
                 <div className='project-container'>
-                    <AddTodo projectid={this.props.project.projectId} userid={this.props.userid} loadTodoList={this.props.loadTodoList}/>
-                    <Todo todoList={this.props.project.todoList}/>
+                    <AddTodo 
+                        projectid={this.props.project.projectId} 
+                        userid={this.props.userid} 
+                        loadTodoList={this.props.loadTodoList}/>
+                    <Todo 
+                        todoList={this.props.project.todoList} 
+                        projectid={this.props.project.projectId} 
+                        userid={this.props.userid} 
+                        loadTodoList={this.props.loadTodoList}/>
                     <InProgress />
                     <Finished />
                 </div>

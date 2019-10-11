@@ -8,6 +8,7 @@ class SelectedProject extends Component {
     constructor(props) {
         super(props);
 }    
+
     render() {
         return (
             <div className='selected-project'>
@@ -22,7 +23,9 @@ class SelectedProject extends Component {
                         projectid={this.props.project.projectId} 
                         userid={this.props.userid} 
                         loadTodoList={this.props.loadTodoList}/>
-                    <InProgress />
+                    <InProgress 
+                        loadInProgressList={this.props.loadInProgressList}
+                        inProgressList={this.props.project.inProgressList}/>
                     <Finished />
                 </div>
                 

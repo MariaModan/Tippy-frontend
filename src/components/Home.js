@@ -20,9 +20,16 @@ class Home extends React.Component {
     renderWindowSwitch = () => {
         switch(this.state.rightWindow){
             case 'selectedProject':
-                return <SelectedProject project={this.state.selectedProject} userid={this.props.user.userid} loadTodoList={this.loadTodoList}/>
+                return <SelectedProject 
+                            project={this.state.selectedProject} 
+                            userid={this.props.user.userid} 
+                            loadTodoList={this.loadTodoList}
+                            loadInProgressList={this.loadInProgressList}/>
             case 'addProject':
-                return <AddProject loadProject={this.loadProject} user={this.props.user} getProjectList={this.getProjectList}/>
+                return <AddProject 
+                            loadProject={this.loadProject} 
+                            user={this.props.user} 
+                            getProjectList={this.getProjectList}/>
             default:
                 return <Quote />
         }
@@ -33,6 +40,7 @@ class Home extends React.Component {
             projectid: projectId
         });
 
+        // loadign the todo, inprogress, and finished lists for the choosen project        
         fetch('http://localhost:5500/listtodo', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -40,15 +48,29 @@ class Home extends React.Component {
         })
         .then(response => response.json())
         .then(todos => {
-        this.setState({
-            rightWindow: 'selectedProject',
-            selectedProject:{
-                projectId: projectId,
-                projectTitle: projectTitle,
-                todoList: todos
-            }
+            this.setState({
+                    selectedProject:{
+                    projectId: projectId,
+                    projectTitle: projectTitle,
+                    todoList: todos
+                }
+            })
+            
+            return fetch('http://localhost:5500/listinprogress', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: body
+            })
         })
-    })
+        .then(response => response.json())
+        .then(inprogress => {
+            this.setState({
+                rightWindow: 'selectedProject',
+                selectedProject: {...this.state.selectedProject, inProgressList: inprogress}
+            })
+        })
+        .catch(err => console.log(err))
+          
 }
 
     loadTodoList = (projectid) => {
@@ -65,6 +87,24 @@ class Home extends React.Component {
         .then(todos => {
             this.setState({
                 selectedProject: {...this.state.selectedProject, todoList: todos}                
+            })
+        })
+    }
+
+    loadInProgressList = (projectid) => {
+        const body = JSON.stringify({
+            projectid: projectid
+        });
+
+        fetch('http://localhost:5500/listinprogress', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(inProgress => {
+            this.setState({
+                selectedProject: {...this.state.selectedProject, inProgressList: inProgress}                
             })
         })
     }
@@ -91,6 +131,21 @@ class Home extends React.Component {
             })
         })
     }
+
+    delProject = (projectid) => {
+        const body = JSON.stringify({projectid: projectid})
+
+        fetch('http://localhost:5500/delproject',{
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(data => this.getProjectList())
+        .catch( err => console.log(err))
+
+    }
+
     render () {
         // //modify this to account for names made of 2+ words as well
         // const capitalize = (string) => {
@@ -102,7 +157,7 @@ class Home extends React.Component {
                 <div className='home-bg'></div>
                 <div className='home-container'>
                     <UserInfo user={this.props.user}/>
-                    <ProjectsInfo loadProject={this.loadProject} openAddProject={this.openAddProject} projectList={this.state.projectList} getProjectList={this.getProjectList}/>
+                    <ProjectsInfo loadProject={this.loadProject} openAddProject={this.openAddProject} projectList={this.state.projectList} getProjectList={this.getProjectList} delProject={this.delProject}/>
                     {this.renderWindowSwitch()}
                 </div>
             </div>

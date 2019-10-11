@@ -19,7 +19,7 @@ class ProjectsInfo extends Component {
                         Add Project
                     </button>
                 <SearchProject />
-                <ProjectList loadProject={this.props.loadProject} projectList={this.props.projectList}/>                
+                <ProjectList loadProject={this.props.loadProject} projectList={this.props.projectList} delProject={this.props.delProject}/>                
             </div>
         )
     }

@@ -6,7 +6,8 @@ class InProgress extends Component {
         return (
             <div className='inprogress-container task-container'>
                 <h3>In Progress</h3>
-                <InProgressList />
+                <InProgressList 
+                    inProgressList={this.props.inProgressList}/>
             </div>
         )
     }

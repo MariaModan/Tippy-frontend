@@ -10,7 +10,11 @@ class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedProject: {},
+            selectedProject: {
+                todoList: [],
+                inProgressList: [],
+                finishedList: []
+            },
             //this will determine what gets shown on the right side of the window, the default is 'quote' which shows an insirational quote, when clicking on add project this will change to 'addProject' ans show AddProject component, when clicking on a project from the list it will change to selectedProject and load the SelectedProject component
             rightWindow:'quote',
             projectList: []
@@ -49,11 +53,7 @@ class Home extends React.Component {
         .then(response => response.json())
         .then(todos => {
             this.setState({
-                    selectedProject:{
-                    projectId: projectId,
-                    projectTitle: projectTitle,
-                    todoList: todos
-                }
+                selectedProject: {...this.state.selectedProject, todoList: todos}
             })
             
             return fetch('http://localhost:5500/listinprogress', {
@@ -64,10 +64,17 @@ class Home extends React.Component {
         })
         .then(response => response.json())
         .then(inprogress => {
-            this.setState({
-                rightWindow: 'selectedProject',
-                selectedProject: {...this.state.selectedProject, inProgressList: inprogress}
-            })
+            if(inprogress.length > 0){
+                this.setState({
+                    rightWindow: 'selectedProject',
+                    selectedProject: {...this.state.selectedProject, inProgressList: inprogress}
+                })
+            }else {
+                this.setState({
+                    rightWindow: 'selectedProject'
+                })
+            }
+            
         })
         .catch(err => console.log(err))
           

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Todo from './Todo';
-import InProgress from './InProgress';
-import Finished from './Finished';
-import AddTodo from './AddTodo';
+import Todo from './todo/Todo';
+import InProgress from './inprogress/InProgress';
+import Finished from './finished/Finished';
+import AddTodo from './todo/AddTodo';
 
 class SelectedProject extends Component {
     constructor(props) {

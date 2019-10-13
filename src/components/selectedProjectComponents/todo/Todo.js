@@ -29,7 +29,10 @@ class Todo extends Component {
                 headers: {'Content-Type': 'application/json'},
                 body: body
             }).then( res => res.json())
-            .then(data => this.props.loadTodoList(this.props.projectid))
+            .then(data => {
+                this.props.loadTodoList(this.props.projectid);
+                this.props.loadInProgressList(this.props.projectid)
+            })
             .catch(err => console.log(err))
         })
     }

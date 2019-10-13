@@ -22,10 +22,13 @@ class SelectedProject extends Component {
                         todoList={this.props.project.todoList} 
                         projectid={this.props.project.projectId} 
                         userid={this.props.userid} 
-                        loadTodoList={this.props.loadTodoList}/>
+                        loadTodoList={this.props.loadTodoList}
+                        loadInProgressList={this.props.loadInProgressList}/>
                     <InProgress 
                         loadInProgressList={this.props.loadInProgressList}
-                        inProgressList={this.props.project.inProgressList}/>
+                        inProgressList={this.props.project.inProgressList}
+                        projectid={this.props.project.projectId} 
+                        userid={this.props.userid}/>
                     <Finished />
                 </div>
                 

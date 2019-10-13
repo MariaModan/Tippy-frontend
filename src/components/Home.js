@@ -53,7 +53,7 @@ class Home extends React.Component {
         .then(response => response.json())
         .then(todos => {
             this.setState({
-                selectedProject: {...this.state.selectedProject, todoList: todos}
+                selectedProject: {...this.state.selectedProject, todoList: todos, title:projectTitle}
             })
             
             return fetch('http://localhost:5500/listinprogress', {
@@ -64,20 +64,13 @@ class Home extends React.Component {
         })
         .then(response => response.json())
         .then(inprogress => {
-            if(inprogress.length > 0){
-                this.setState({
-                    rightWindow: 'selectedProject',
-                    selectedProject: {...this.state.selectedProject, inProgressList: inprogress}
-                })
-            }else {
-                this.setState({
-                    rightWindow: 'selectedProject'
-                })
-            }
+            this.setState({
+                rightWindow: 'selectedProject',
+                selectedProject: {...this.state.selectedProject, inProgressList: inprogress}
+            })
             
         })
-        .catch(err => console.log(err))
-          
+        .catch(err => console.log(err)) 
 }
 
     loadTodoList = (projectid) => {

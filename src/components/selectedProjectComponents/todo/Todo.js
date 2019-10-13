@@ -39,7 +39,9 @@ class Todo extends Component {
             <div className='todo-container task-container'>
                 <h3>To do</h3>
                 <TodoList todoList={this.props.todoList} addToSelectedTasks={this.addToSelectedTasks}/>
+                {this.props.todoList.length > 0 &&
                 <button onClick={this.moveTaskToInProgress}>Move to In Progress</button>
+                }
             </div>
         )
     }

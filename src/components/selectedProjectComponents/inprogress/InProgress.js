@@ -22,7 +22,9 @@ class InProgress extends Component {
                 <InProgressList 
                     inProgressList={this.props.inProgressList}
                     addToSelectedTasks={this.addToSelectedTasks}/>
+                {this.props.inProgressList.length > 0 &&
                 <button>Move to Finished</button>
+                }
             </div>
         )
     }

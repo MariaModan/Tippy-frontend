@@ -15,6 +15,29 @@ class InProgress extends Component {
         })
     }
 
+    moveTaskToFinished = () => {
+        this.state.selectedTasks.map( task => {
+            const body = JSON.stringify({
+                projectid: this.props.projectid,
+                userid: this.props.userid,
+                taskid: task.taskid,
+                task_title: task.title
+            })
+            
+            fetch('http://localhost:5500/addFinished', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: body
+            }).then( res => res.json())
+            .then(data => {
+                this.props.loadInProgressList(this.props.projectid);
+                this.props.loadFinishedList(this.props.projectid);
+            })
+            .catch(err => console.log(err))
+        })
+        
+    }
+
     render() {
         return (
             <div className='inprogress-container task-container'>
@@ -23,7 +46,7 @@ class InProgress extends Component {
                     inProgressList={this.props.inProgressList}
                     addToSelectedTasks={this.addToSelectedTasks}/>
                 {this.props.inProgressList.length > 0 &&
-                <button>Move to Finished</button>
+                <button onClick={this.moveTaskToFinished}>Move to Finished</button>
                 }
             </div>
         )

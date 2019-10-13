@@ -53,7 +53,7 @@ class Home extends React.Component {
         .then(response => response.json())
         .then(todos => {
             this.setState({
-                selectedProject: {...this.state.selectedProject, todoList: todos, title:projectTitle}
+                selectedProject: {...this.state.selectedProject, todoList: todos, projectTitle:projectTitle, projectId: projectId}
             })
             
             return fetch('http://localhost:5500/listinprogress', {

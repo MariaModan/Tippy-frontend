@@ -28,8 +28,11 @@ class SelectedProject extends Component {
                         loadInProgressList={this.props.loadInProgressList}
                         inProgressList={this.props.project.inProgressList}
                         projectid={this.props.project.projectId} 
-                        userid={this.props.userid}/>
-                    <Finished />
+                        userid={this.props.userid}
+                        loadFinishedList={this.props.loadFinishedList}/>
+                    <Finished 
+                        finishedList={this.props.project.finishedList}
+                        loadFinishedList={this.props.finishedList}/>
                 </div>
                 
             </div>

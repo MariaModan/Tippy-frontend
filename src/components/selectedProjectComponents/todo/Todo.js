@@ -32,6 +32,9 @@ class Todo extends Component {
             .then(data => {
                 this.props.loadTodoList(this.props.projectid);
                 this.props.loadInProgressList(this.props.projectid)
+                this.setState({
+                    selectedTasks: []
+                })
             })
             .catch(err => console.log(err))
         })

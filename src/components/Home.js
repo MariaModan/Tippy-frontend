@@ -171,7 +171,13 @@ class Home extends React.Component {
             body: body
         })
         .then(response => response.json())
-        .then(data => this.getProjectList())
+        .then(data => {
+            this.getProjectList();
+            this.setState({
+                rightWindow:'quote',
+                selectedProject: {}
+            })
+        })
         .catch( err => console.log(err))
 
     }

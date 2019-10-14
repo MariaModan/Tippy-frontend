@@ -28,7 +28,8 @@ class Home extends React.Component {
                             project={this.state.selectedProject} 
                             userid={this.props.user.userid} 
                             loadTodoList={this.loadTodoList}
-                            loadInProgressList={this.loadInProgressList}/>
+                            loadInProgressList={this.loadInProgressList}
+                            loadFinishedList={this.loadFinishedList}/>
             case 'addProject':
                 return <AddProject 
                             loadProject={this.loadProject} 
@@ -65,13 +66,24 @@ class Home extends React.Component {
         .then(response => response.json())
         .then(inprogress => {
             this.setState({
-                rightWindow: 'selectedProject',
                 selectedProject: {...this.state.selectedProject, inProgressList: inprogress}
             })
-            
+
+            return fetch('http://localhost:5500/listfinished', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: body
+            })   
+        })
+        .then(response => response.json())
+        .then(finished => {
+            this.setState({
+                rightWindow: 'selectedProject',
+                selectedProject: {...this.state.selectedProject, finishedList: finished}
+            })
         })
         .catch(err => console.log(err)) 
-}
+    }
 
     loadTodoList = (projectid) => {
         const body = JSON.stringify({
@@ -105,6 +117,24 @@ class Home extends React.Component {
         .then(inProgress => {
             this.setState({
                 selectedProject: {...this.state.selectedProject, inProgressList: inProgress}                
+            })
+        })
+    }
+
+    loadFinishedList = (projectid) => {
+        const body = JSON.stringify({
+            projectid: projectid
+        });
+
+        fetch('http://localhost:5500/listfinished', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(finishedList => {
+            this.setState({
+                selectedProject: {...this.state.selectedProject, finishedList: finishedList}                
             })
         })
     }

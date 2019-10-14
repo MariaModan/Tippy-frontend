@@ -32,6 +32,9 @@ class InProgress extends Component {
             .then(data => {
                 this.props.loadInProgressList(this.props.projectid);
                 this.props.loadFinishedList(this.props.projectid);
+                this.setState({
+                    selectedTasks: []
+                })
             })
             .catch(err => console.log(err))
         })

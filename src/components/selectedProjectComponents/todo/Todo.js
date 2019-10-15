@@ -5,25 +5,34 @@ class Todo extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            selectedTasks : []
+            toDoTasks : this.props.todoList.map(item => item = {...item,              selected:false})
         }
     }
 
-    addToSelectedTasks = (taskid, title) => {
+    toggleSelected = (taskid) => {
+
         this.setState({
-            selectedTasks: [...this.state.selectedTasks, {taskid: taskid, title: title}]
-        })
+            toDoTasks: this.state.toDoTasks.map( todo => {
+                if(todo.taskid === taskid){
+                    todo.selected = !todo.selected
+                }
+                return todo;
+            })
+        })        
     }
 
     moveTaskToInProgress = () => {
-        this.state.selectedTasks.map( task => {
-            const body = JSON.stringify({
-                projectid: this.props.projectid,
-                userid: this.props.userid,
-                taskid: task.taskid,
-                task_title: task.title
-            })
-
+        this.state.toDoTasks.map( task => {
+            let body ={};
+            if(task.selected === true){
+                body = JSON.stringify({
+                    projectid: this.props.projectid,
+                    userid: this.props.userid,
+                    taskid: task.taskid,
+                    task_title: task.task_title
+                })
+            }
+            
             fetch('http://localhost:5500/addInProgress', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
@@ -33,7 +42,7 @@ class Todo extends Component {
                 this.props.loadTodoList(this.props.projectid);
                 this.props.loadInProgressList(this.props.projectid)
                 this.setState({
-                    selectedTasks: []
+                    toDoTasks : this.props.todoList.map(item => item = {...item, selected:false})
                 })
             })
             .catch(err => console.log(err))
@@ -44,7 +53,7 @@ class Todo extends Component {
         return (
             <div className='todo-container task-container'>
                 <h3>To do</h3>
-                <TodoList todoList={this.props.todoList} addToSelectedTasks={this.addToSelectedTasks}/>
+                <TodoList todoList={this.props.todoList} toggleSelected={this.toggleSelected}/>
                 {this.props.todoList.length > 0 &&
                 <button onClick={this.moveTaskToInProgress}>Move to In Progress</button>
                 }

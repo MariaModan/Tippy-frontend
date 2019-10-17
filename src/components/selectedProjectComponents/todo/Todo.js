@@ -4,25 +4,12 @@ import TodoList from './TodoList';
 class Todo extends Component {
     constructor (props) {
         super(props);
-        this.state = {
-            toDoTasks : this.props.todoList.map(item => item = {...item,              selected:false})
-        }
     }
 
-    toggleSelected = (taskid) => {
-
-        this.setState({
-            toDoTasks: this.state.toDoTasks.map( todo => {
-                if(todo.taskid === taskid){
-                    todo.selected = !todo.selected
-                }
-                return todo;
-            })
-        })        
-    }
+    
 
     moveTaskToInProgress = () => {
-        this.state.toDoTasks.map( task => {
+        this.props.todoList.map( task => {
             let body ={};
             if(task.selected === true){
                 body = JSON.stringify({
@@ -41,9 +28,6 @@ class Todo extends Component {
             .then(data => {
                 this.props.loadTodoList(this.props.projectid);
                 this.props.loadInProgressList(this.props.projectid)
-                this.setState({
-                    toDoTasks : this.props.todoList.map(item => item = {...item, selected:false})
-                })
             })
             .catch(err => console.log(err))
         })
@@ -53,7 +37,7 @@ class Todo extends Component {
         return (
             <div className='todo-container task-container'>
                 <h3>To do</h3>
-                <TodoList todoList={this.props.todoList} toggleSelected={this.toggleSelected}/>
+                <TodoList todoList={this.props.todoList} toggleSelected={this.props.toggleSelected}/>
                 {this.props.todoList.length > 0 &&
                 <button onClick={this.moveTaskToInProgress}>Move to In Progress</button>
                 }

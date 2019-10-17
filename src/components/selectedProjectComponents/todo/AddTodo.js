@@ -33,7 +33,13 @@ class AddTodo extends Component {
         })
         .then(response => response.json())
         .then(data => {
-            this.props.loadTodoList(this.props.projectid);
+            const {taskid, task_title} = data[0];
+            const newTodo = {
+                task_title,
+                taskid,
+                selected: false
+            }
+            this.props.addTodoToList(newTodo);
         })
         .catch(err => console.log(err))
     }

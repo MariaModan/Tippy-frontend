@@ -19,17 +19,20 @@ class Todo extends Component {
                     task_title: task.task_title
                 })
             }
-            
+
             fetch('http://localhost:5500/addInProgress', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: body
-            }).then( res => res.json())
-            .then(data => {
-                this.props.loadTodoList(this.props.projectid);
-                this.props.loadInProgressList(this.props.projectid)
-            })
-            .catch(err => console.log(err))
+                }).then( res => res.json())
+                .then(data => {
+                    //set the state on only the ones with false selected
+                    this.props.loadTodoList(this.props.projectid);
+                    this.props.loadInProgressList(this.props.projectid)
+
+                })
+                .catch(err => console.log(err))
+            
         })
     }
 

@@ -9,7 +9,8 @@ class SelectedProject extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todoList: this.props.project.todoList.map(item => item = {...item, selected:false})
+            todoList: this.props.project.todoList.map(item => item = {...item, selected:false}),
+            inProgressList: this.props.project.inProgressList.map(item => item = {...item, selected:false})
         }
     }
 
@@ -31,20 +32,48 @@ class SelectedProject extends Component {
         })
     }
 
+    loadInProgressList = (projectid) => {
+        const body = JSON.stringify({
+            projectid: projectid
+        });
+
+        fetch('http://localhost:5500/listinprogress', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(inProgress => {
+            this.setState({
+                inProgressList: inProgress.map(item => item = {...item, selected:false})              
+            })
+        })
+    }
+
     addTodoToList = (newTodo) => {
         this.setState({
             todoList:[...this.state.todoList, newTodo]
         })
     }
 
-    toggleSelected = (taskid) => {
-
+    toggleSelectedTodo = (taskid) => {
         this.setState({
             todoList: this.state.todoList.map( todo => {
                 if(todo.taskid === taskid){
                     todo.selected = !todo.selected
                 }
                 return todo;
+            })
+        })        
+    }
+
+    toggleSelectedInProgress = (taskid) => {
+        this.setState({
+            inProgressList: this.state.inProgressList.map( task => {
+                if(task.taskid === taskid){
+                    task.selected = !task.selected
+                }
+                return task;
             })
         })        
     }
@@ -60,16 +89,17 @@ class SelectedProject extends Component {
                         addTodoToList={this.addTodoToList}/>
                     <Todo 
                         todoList={this.state.todoList} 
-                        toggleSelected={this.toggleSelected}
+                        toggleSelected={this.toggleSelectedTodo}
                         projectid={this.props.project.projectId} 
                         userid={this.props.userid} 
                         loadTodoList={this.loadTodoList}
-                        loadInProgressList={this.props.loadInProgressList}/>
+                        loadInProgressList={this.loadInProgressList}/>
                     <InProgress 
-                        loadInProgressList={this.props.loadInProgressList}
-                        inProgressList={this.props.project.inProgressList}
+                        loadInProgressList={this.loadInProgressList}
+                        inProgressList={this.state.inProgressList}
                         projectid={this.props.project.projectId} 
                         userid={this.props.userid}
+                        toggleSelected={this.toggleSelectedInProgress}
                         loadFinishedList={this.props.loadFinishedList}/>
                     <Finished 
                         finishedList={this.props.project.finishedList}

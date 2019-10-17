@@ -26,8 +26,7 @@ class Home extends React.Component {
             case 'selectedProject':
                 return <SelectedProject 
                             project={this.state.selectedProject} 
-                            userid={this.props.user.userid} 
-                            loadInProgressList={this.loadInProgressList}
+                            userid={this.props.user.userid}
                             loadFinishedList={this.loadFinishedList}/>
             case 'addProject':
                 return <AddProject 
@@ -82,26 +81,6 @@ class Home extends React.Component {
             })
         })
         .catch(err => console.log(err)) 
-    }
-
-    
-
-    loadInProgressList = (projectid) => {
-        const body = JSON.stringify({
-            projectid: projectid
-        });
-
-        fetch('http://localhost:5500/listinprogress', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: body
-        })
-        .then(response => response.json())
-        .then(inProgress => {
-            this.setState({
-                selectedProject: {...this.state.selectedProject, inProgressList: inProgress}                
-            })
-        })
     }
 
     loadFinishedList = (projectid) => {

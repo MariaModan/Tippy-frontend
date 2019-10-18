@@ -9,17 +9,21 @@ class InProgress extends Component {
     moveTaskToFinished = () => {
         this.props.inProgressList.map( task => {
             let body = {};
+           
             if(task.selected === true){
                 body = JSON.stringify({
                     projectid: this.props.projectid,
                     userid: this.props.userid,
                     taskid: task.taskid,
-                    task_title: task.title
+                    task_title: task.task_title
             })
-            
+
             fetch('http://localhost:5500/addFinished', {
                 method: 'post',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 body: body
             }).then( res => res.json())
             .then(data => {

@@ -10,7 +10,8 @@ class SelectedProject extends Component {
         super(props);
         this.state = {
             todoList: this.props.project.todoList.map(item => item = {...item, selected:false}),
-            inProgressList: this.props.project.inProgressList.map(item => item = {...item, selected:false})
+            inProgressList: this.props.project.inProgressList.map(item => item = {...item, selected:false}),
+            finishedList:this.props.project.finishedList.map(item => item = {...item, selected:false})
         }
     }
 
@@ -36,7 +37,7 @@ class SelectedProject extends Component {
         const body = JSON.stringify({
             projectid: projectid
         });
-
+        
         fetch('http://localhost:5500/listinprogress', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -49,6 +50,25 @@ class SelectedProject extends Component {
             })
         })
     }
+
+    loadFinishedList = (projectid) => {
+        const body = JSON.stringify({
+            projectid: projectid
+        });
+
+        fetch('http://localhost:5500/listfinished', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(finishedList => {
+            this.setState({
+                finishedList: finishedList.map(item => item = {...item, selected:false})                
+            })
+        })
+    }
+
 
     addTodoToList = (newTodo) => {
         this.setState({
@@ -100,10 +120,10 @@ class SelectedProject extends Component {
                         projectid={this.props.project.projectId} 
                         userid={this.props.userid}
                         toggleSelected={this.toggleSelectedInProgress}
-                        loadFinishedList={this.props.loadFinishedList}/>
+                        loadFinishedList={this.loadFinishedList}/>
                     <Finished 
-                        finishedList={this.props.project.finishedList}
-                        loadFinishedList={this.props.finishedList}/>
+                        finishedList={this.state.finishedList}
+                        loadFinishedList={this.finishedList}/>
                 </div>
                 
             </div>

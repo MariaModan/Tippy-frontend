@@ -10,7 +10,7 @@ class InProgressList extends Component {
                         key={'inprogress'+item.taskid} 
                         title={item.task_title} 
                         taskid={item.taskid} 
-                        addToSelectedTasks={this.props.addToSelectedTasks}/>)}
+                        toggleSelected={this.props.toggleSelected}/>)}
             </div>
         )
     }

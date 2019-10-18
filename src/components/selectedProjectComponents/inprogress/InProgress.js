@@ -39,7 +39,7 @@ class InProgress extends Component {
     render() {
         return (
             <div className='inprogress-container task-container'>
-                <h3>In Progress</h3>
+                <h3><span className='subtitle'>In Progress</span></h3>
                 <InProgressList 
                     inProgressList={this.props.inProgressList}
                     toggleSelected={this.props.toggleSelected}/>

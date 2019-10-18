@@ -5,7 +5,7 @@ class Finished extends Component {
     render() {
         return (
             <div className='finished-contained task-container'>
-                <h3>Finished</h3>
+                <h3><span className='subtitle'>Done</span></h3>
                 <FinishedList 
                     finishedList={this.props.finishedList}/>
                 

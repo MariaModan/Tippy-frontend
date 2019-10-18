@@ -40,8 +40,10 @@ class Todo extends Component {
     render() {
         return (
             <div className='todo-container task-container'>
-                <h3>To do</h3>
+
+                <h3><span className='subtitle'>To do</span></h3>
                 <TodoList todoList={this.props.todoList} toggleSelected={this.props.toggleSelected}/>
+
                 {this.props.todoList.length > 0 &&
                 <button onClick={this.moveTaskToInProgress}>Move to In Progress</button>
                 }

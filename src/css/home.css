@@ -35,10 +35,20 @@
     padding: 0;
 }
 
-.userinfo-container > h1 {
+.greeting-container {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
     padding: 0 1em;
+}
+
+.greeting {
+    font-size: 1.1em;
     text-align: left;
-    font-size: 1.3em;
+}
+
+.signout{
+    font-size: 1.1em;
+    text-align: right;
 }
 
 .user-details {
@@ -76,20 +86,23 @@
 }
 
 .add-project-btn > img {
-    width: 13%;
+    height: 170%;
     vertical-align: middle;
+    padding: 0 0.2em ;
 }
 
 
 .search-project {
-    display: flex;
-    height: 1.5em;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    height: 2em;
     padding: 0.5em;
-    margin-bottom: 0.5em;
+    margin: 0 1em 0.5em 1em;
 }
 
 .search-icon {
-    width: 100%;
+    width:30%;
+    height: 30%;
     cursor: pointer;
 }
 
@@ -169,25 +182,17 @@
 .selected-project > header {
     height: 5%;
     font-size: 2em;
-    margin:0;
-    padding: 0;
+    margin: 0;
+    padding: 0.5em;
 }
 
 .add-todo {
     text-align: left;
-    height: 1.5em;
-    grid-column: 1/4;
+    height: 2em;
+    grid-column: 1/2;
     grid-row: 1/2;
-    display:flex;
-}
-
-.add-todo > input {
-    height: 100%;
-    padding: 0;
-}
-
-.add-todo> button {
-    height: 100%;
+    display:grid;
+    grid-template-columns: 4fr 1fr;
 }
 
 .project-container {

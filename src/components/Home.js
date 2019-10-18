@@ -1,5 +1,5 @@
 import React from 'react';
-import UserInfo from './UserInfo';
+import UserInfo from './userinfo/UserInfo';
 import ProjectsInfo from './projectsSectionComponents/ProjectsInfo';
 import SelectedProject from './selectedProjectComponents/SelectedProject';
 import AddProject from './AddProject';
@@ -183,10 +183,6 @@ class Home extends React.Component {
     }
 
     render () {
-        // //modify this to account for names made of 2+ words as well
-        // const capitalize = (string) => {
-        //     return string.charAt(0).toUpperCase() + string.slice(1);
-        // }
 
         return(
             <div >

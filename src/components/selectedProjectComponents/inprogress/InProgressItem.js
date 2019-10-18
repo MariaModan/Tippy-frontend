@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class InProgressItem extends Component {
     render() {
         return (
-            <div>
+            <div className='task'>
                 <label><input type='checkbox' onClick={this.props.toggleSelected.bind(this, this.props.taskid, this.props.title)}/>{this.props.title}</label>
             </div>
         )

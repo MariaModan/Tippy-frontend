@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class FinishedItem extends Component {
     render() {
         return (
-            <div>
+            <div className='task'>
                 <label><input type='checkbox'></input>{this.props.title}</label>
             </div>
         )

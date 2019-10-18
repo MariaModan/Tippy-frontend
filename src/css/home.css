@@ -229,11 +229,6 @@
     border-radius: 10px;
 }
 
-.subtitle{
-    border-bottom: 2px solid black;
-    font-size:1.2em;
-}
-
 .todo-container{
     grid-column: 1/2;
 }
@@ -244,4 +239,21 @@
 
 .finished-container{
     grid-column: 3/4;
+}
+
+.subtitle{
+    border-bottom: 2px solid black;
+    font-size:1.2em;
+}
+
+.task {
+    text-align:left;
+    font-size: 1.2em;
+    margin: 0 2em;
+}
+
+.task-container > button {
+    margin-top: 2em;
+    border-radius: 5px;
+    height: 2em;
 }

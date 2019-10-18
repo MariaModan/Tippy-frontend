@@ -5,6 +5,7 @@ class TodoItem extends Component {
         return (
             <div>
                 <label><input type='checkbox' onClick={this.props.toggleSelected.bind(this, this.props.taskid)}/>{this.props.title} </label>
+
             </div>
         )
     }

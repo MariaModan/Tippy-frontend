@@ -4,7 +4,7 @@ class FinishedItem extends Component {
     render() {
         return (
             <div>
-                <input type='checkbox'></input>{this.props.title}
+                <label><input type='checkbox'></input>{this.props.title}</label>
             </div>
         )
     }

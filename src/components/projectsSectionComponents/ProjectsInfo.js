@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SearchProject from './SearchProject';
-import ProjectList from './ProjectList';
+import SearchProject from './searchProject/SearchProject';
+import ProjectList from './projectList/ProjectList';
 import icon from '../../img/add-project-icon.svg';
 
 class ProjectsInfo extends Component {

@@ -30,7 +30,7 @@
 .userinfo-container {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    background:lightblue;
+    background:#d4fad4;
     border-radius: 10px 0 0 0;
     margin: 0;
     padding: 0;
@@ -144,28 +144,40 @@
     grid-row-end: 8;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 0 10px 10px 0;
+    background-image: url(https://images.unsplash.com/photo-1518607692857-bff9babd9d40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80);
+    background-size: cover;
 }
 
-.add-project-container > h1 {
-    margin-top: 5em;
+.add-project-container-inner {
+    border: 2px solid #333;
+    border-radius: 20px;
+    padding:0.5em 1em 1em 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 420px;
 }
 
-.add-project-container > form {
+.add-project-container-inner > form {
     display: grid;
     grid-template-columns: 1fr 400px 1fr;
-    grid-gap: 0.5em;
-    text-align: left;
 }
 
-.add-project-container > form > label, textarea, button {
-    grid-column: 2;
+.add-project-container-inner > form > label {
+    grid-column: 2/3;
+    align-self: left;
 }
 
-.add-project-container > form > label > input {
-    margin-left: 1em;
-    grid-column-end: 3;
+.add-project-container-inner > form > label > input {
+    width: 65%;
 }
+
+.add-project-container-inner > form > button {
+    grid-column: 2/3;
+}
+
+
 
 /* Quote section */
 
@@ -194,7 +206,7 @@
     grid-column-start: 2;
     grid-row-start: 1;
     grid-row-end: 8;
-    background: pink;
+    background: #ecfeec;
     border-radius: 0 10px 10px 0;
 }
 
@@ -217,7 +229,7 @@
 
 .project-container {
     display: grid;
-    height: 85%;
+    height: 83%;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 5% 95%;
     grid-gap: 1em;
@@ -225,7 +237,7 @@
 }
 
 .task-container {
-    background-color: lightgreen;  
+    background-color: #90ee90;  
     border-radius: 10px;
 }
 

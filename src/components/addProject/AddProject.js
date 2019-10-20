@@ -36,18 +36,20 @@ class AddProject extends Component {
     render() {
         return (
             <div className='add-project-container'>
-                <h1>New Project</h1>
-                <form 
-                    onSubmit={this.submitNewProject}>
-                    <label htmlFor='project-name'>Project Name: 
-                        <input 
-                            type='text' 
-                            name='projectTitle' 
-                            id='project-name' 
-                            onChange={this.onprojectTitleChange}/>
-                        </label>
-                    <button type='submit'>Create Project</button>
-                </form>
+                <div className='add-project-container-inner'>
+                    <h1>New Project</h1>
+                    <form 
+                        onSubmit={this.submitNewProject}>
+                        <label class-name='add-project-label' htmlFor='project-name'>Project Name: 
+                            <input 
+                                type='text' 
+                                name='projectTitle' 
+                                id='project-name' 
+                                onChange={this.onprojectTitleChange}/>
+                            </label>
+                        <button className='add-project-btn' type='submit'>Create Project</button>
+                    </form>
+                </div>
             </div>
         )
     }

@@ -13,6 +13,7 @@ class App extends React.Component {
         name: 'Test',
         userid: 8
       }
+      
     }  
   }
 

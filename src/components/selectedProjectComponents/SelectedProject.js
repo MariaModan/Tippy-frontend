@@ -3,7 +3,6 @@ import Todo from './todo/Todo';
 import InProgress from './inprogress/InProgress';
 import Finished from './finished/Finished';
 import AddTodo from './addTodo/AddTodo';
-import '../../css/project.css'
 
 class SelectedProject extends Component {
     constructor(props) {

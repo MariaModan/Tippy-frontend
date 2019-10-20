@@ -8,11 +8,11 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      route: 'signin',
-      // user: {
-      //   name: 'Test',
-      //   userid: 8
-      user:{}
+      route: 'home',
+      user: {
+        name: 'Test',
+        userid: 8
+      }
       
     }  
   }

@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import TodoList from './TodoList';
 
 class Todo extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
     }
-
-    
 
     moveTaskToInProgress = () => {
         this.props.todoList.map( task => {
@@ -19,7 +17,7 @@ class Todo extends Component {
                     task_title: task.task_title
                 })
             }
-            console.log(body)
+            
             fetch('http://localhost:5500/addInProgress', {
                 method: 'post',
                 headers: {
@@ -41,9 +39,14 @@ class Todo extends Component {
         return (
             <div className='todo-container task-container'>
                 <h3><span className='subtitle'>To do</span></h3>
-                <TodoList todoList={this.props.todoList} toggleSelected={this.props.toggleSelected}/>
-                {this.props.todoList.length > 0 &&
-                <button onClick={this.moveTaskToInProgress}>Move to In Progress</button>
+                {this.props.todoList !== undefined &&
+                    <div> 
+                    <TodoList todoList={this.props.todoList} 
+                            toggleSelected={this.props.toggleSelected}/>
+                    {this.props.todoList.length > 0 &&
+                    <button onClick={this.moveTaskToInProgress}>Move to In Progress</button>
+                    }
+                    </div>
                 }
             </div>
         )

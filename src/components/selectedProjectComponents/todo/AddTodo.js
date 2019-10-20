@@ -8,6 +8,14 @@ class AddTodo extends Component {
         }
     }
 
+    componentDidUpdate(prevProps){
+        if (this.props.projectid !== prevProps.projectid){
+            this.setState({
+                newTask: ''
+            })
+        }
+    }
+
     onInputChange = (event) =>{
         this.setState({
             newTask: event.target.value

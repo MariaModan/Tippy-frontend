@@ -9,9 +9,17 @@ class SelectedProject extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todoList: this.props.project.todoList.map(item => item = {...item, selected:false}),
-            inProgressList: this.props.project.inProgressList.map(item => item = {...item, selected:false}),
-            finishedList:this.props.project.finishedList.map(item => item = {...item, selected:false})
+            todoList: this.loadTodoList(this.props.projectId),
+            inProgressList: this.loadInProgressList(this.props.projectId),
+            finishedList: this.loadFinishedList(this.props.projectId)
+        }
+    }
+    
+    componentDidUpdate(prevProps){
+        if (this.props.projectId !== prevProps.projectId){
+            this.loadTodoList(this.props.projectId);
+            this.loadInProgressList(this.props.projectId);
+            this.loadFinishedList(this.props.projectId);
         }
     }
 
@@ -101,23 +109,23 @@ class SelectedProject extends Component {
     render() {
         return (
             <div className='selected-project'>
-                <header>{this.props.project.projectTitle}</header>
+                <header>{this.props.projectTitle}</header>
                 <div className='project-container'>
                     <AddTodo 
-                        projectid={this.props.project.projectId} 
+                        projectid={this.props.projectId} 
                         userid={this.props.userid}
                         addTodoToList={this.addTodoToList}/>
                     <Todo 
                         todoList={this.state.todoList} 
                         toggleSelected={this.toggleSelectedTodo}
-                        projectid={this.props.project.projectId} 
+                        projectid={this.props.projectId} 
                         userid={this.props.userid} 
                         loadTodoList={this.loadTodoList}
                         loadInProgressList={this.loadInProgressList}/>
                     <InProgress 
                         loadInProgressList={this.loadInProgressList}
                         inProgressList={this.state.inProgressList}
-                        projectid={this.props.project.projectId} 
+                        projectid={this.props.projectId} 
                         userid={this.props.userid}
                         toggleSelected={this.toggleSelectedInProgress}
                         loadFinishedList={this.loadFinishedList}/>

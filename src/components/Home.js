@@ -10,11 +10,8 @@ class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedProject: {
-                todoList: [],
-                inProgressList: [],
-                finishedList: []
-            },
+            selectedProject:{},
+            
             //this will determine what gets shown on the right side of the window, the default is 'quote' which shows an insirational quote, when clicking on add project this will change to 'addProject' ans show AddProject component, when clicking on a project from the list it will change to selectedProject and load the SelectedProject component
             rightWindow:'quote',
             projectList: []
@@ -25,7 +22,11 @@ class Home extends React.Component {
         switch(this.state.rightWindow){
             case 'selectedProject':
                 return <SelectedProject 
-                            project={this.state.selectedProject} 
+                            // todoList={this.state.todoList}
+                            // inProgressList={this.state.inProgressList}
+                            // finishedList={this.state.finishedList}
+                            projectId={this.state.selectedProject.projectId}
+                            projectTitle={this.state.selectedProject.projectTitle}
                             userid={this.props.user.userid}/>
             case 'addProject':
                 return <AddProject 
@@ -37,51 +38,15 @@ class Home extends React.Component {
         }
     }
 
-    loadProject = (projectId, projectTitle) => {
-        const body = JSON.stringify({
-            projectid: projectId
-        });
-
-        // loadign the todo, inprogress, and finished lists for the choosen project        
-        fetch('http://localhost:5500/listtodo', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: body
+    loadProject = (projectId, projectTitle) =>{
+        this.setState({
+            selectedProject:{
+                projectId,
+                projectTitle
+            },
+            rightWindow: 'selectedProject'
         })
-        .then(response => response.json())
-        .then(todos => {
-            this.setState({
-                selectedProject: {...this.state.selectedProject, todoList: todos, projectTitle:projectTitle, projectId: projectId}
-            })
-            
-            return fetch('http://localhost:5500/listinprogress', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: body
-            })
-        })
-        .then(response => response.json())
-        .then(inprogress => {
-            this.setState({
-                selectedProject: {...this.state.selectedProject, inProgressList: inprogress}
-            })
-
-            return fetch('http://localhost:5500/listfinished', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: body
-            })   
-        })
-        .then(response => response.json())
-        .then(finished => {
-            this.setState({
-                rightWindow: 'selectedProject',
-                selectedProject: {...this.state.selectedProject, finishedList: finished}
-            })
-        })
-        .catch(err => console.log(err)) 
     }
-
     
     openAddProject = () => {
         this.setState({
@@ -127,7 +92,6 @@ class Home extends React.Component {
     }
 
     render () {
-
         return(
             <div >
                 <div className='home-bg'></div>

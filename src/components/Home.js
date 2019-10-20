@@ -2,8 +2,8 @@ import React from 'react';
 import UserInfo from './userinfo/UserInfo';
 import ProjectsInfo from './projectsSectionComponents/ProjectsInfo';
 import SelectedProject from './selectedProjectComponents/SelectedProject';
-import AddProject from './AddProject';
-import Quote from './Quote';
+import AddProject from './addProject/AddProject';
+import Quote from './quote/Quote';
 import '../css/home.css';
 
 class Home extends React.Component {
@@ -21,10 +21,7 @@ class Home extends React.Component {
     renderWindowSwitch = () => {
         switch(this.state.rightWindow){
             case 'selectedProject':
-                return <SelectedProject 
-                            // todoList={this.state.todoList}
-                            // inProgressList={this.state.inProgressList}
-                            // finishedList={this.state.finishedList}
+                return <SelectedProject
                             projectId={this.state.selectedProject.projectId}
                             projectTitle={this.state.selectedProject.projectTitle}
                             userid={this.props.user.userid}/>
@@ -88,7 +85,6 @@ class Home extends React.Component {
             })
         })
         .catch( err => console.log(err))
-
     }
 
     render () {
@@ -96,8 +92,14 @@ class Home extends React.Component {
             <div >
                 <div className='home-bg'></div>
                 <div className='home-container'>
-                    <UserInfo user={this.props.user}/>
-                    <ProjectsInfo loadProject={this.loadProject} openAddProject={this.openAddProject} projectList={this.state.projectList} getProjectList={this.getProjectList} delProject={this.delProject}/>
+                    <UserInfo 
+                        user={this.props.user}
+                        signOutUser={this.props.signOutUser}/>
+                    <ProjectsInfo 
+                        loadProject={this.loadProject} 
+                        openAddProject={this.openAddProject} 
+                        projectList={this.state.projectList} getProjectList={this.getProjectList} 
+                        delProject={this.delProject}/>
                     {this.renderWindowSwitch()}
                 </div>
             </div>

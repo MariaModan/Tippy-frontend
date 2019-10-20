@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Todo from './todo/Todo';
 import InProgress from './inprogress/InProgress';
 import Finished from './finished/Finished';
-import AddTodo from './todo/AddTodo';
+import AddTodo from './addTodo/AddTodo';
 import '../../css/project.css'
 
 class SelectedProject extends Component {

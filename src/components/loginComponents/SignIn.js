@@ -48,10 +48,10 @@ class SignIn extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className='signin-container'>
                 <header>
                     <h1>Welcome to Tippy</h1>
-                    <p>We provide the best way for you to keep track of those projects' to-do lists</p>
+                    <p>We provide the best way for you to keep track of those projects' to-do lists.</p>
                     <p>Sign in or sign up for an accunt now!</p>
                 </header>            
                 <div className='formContainer'>

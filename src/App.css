@@ -1,14 +1,10 @@
 * {
   --main-bg-color: #52c8fa;
+
 }
 
 .App {
   text-align: center;
 }
 
-header {
-  margin: 0;
-  padding: 2em 5em;
-  background-color:  var(--main-bg-color);
-}
 

@@ -47,55 +47,6 @@ class Home extends React.Component {
             rightWindow: 'selectedProject'
         })
     }
-
-
-    // loadProject = (projectId, projectTitle) => {
-    //     const body = JSON.stringify({
-    //         projectid: projectId
-    //     });
-
-    //     // loadign the todo, inprogress, and finished lists for the choosen project        
-    //     fetch('http://localhost:5500/listtodo', {
-    //         method: 'post',
-    //         headers: {'Content-Type': 'application/json'},
-    //         body: body
-    //     })
-    //     .then(response => response.json())
-    //     .then(todos => {
-    //         this.setState({
-    //             todoList: todos.map(item => item = {...item, selected:false}), 
-    //             projectTitle:projectTitle, 
-    //             projectId: projectId
-    //         })
-            
-    //         return fetch('http://localhost:5500/listinprogress', {
-    //             method: 'post',
-    //             headers: {'Content-Type': 'application/json'},
-    //             body: body
-    //         })
-    //     })
-    //     .then(response => response.json())
-    //     .then(inprogress => {
-    //         this.setState({
-    //             inProgressList: inprogress.map(item => item = {...item, selected:false})
-    //         })
-
-    //         return fetch('http://localhost:5500/listfinished', {
-    //             method: 'post',
-    //             headers: {'Content-Type': 'application/json'},
-    //             body: body
-    //         })   
-    //     })
-    //     .then(response => response.json())
-    //     .then(finished => {
-    //         return this.setState({
-    //             rightWindow: 'selectedProject', 
-    //             finishedList: finished.map(item => item = {...item, selected:false})
-    //         })
-    //     })
-    //     .catch(err => console.log(err)) 
-    // }
-
     
     openAddProject = () => {
         this.setState({
@@ -141,7 +92,6 @@ class Home extends React.Component {
     }
 
     render () {
-
         return(
             <div >
                 <div className='home-bg'></div>

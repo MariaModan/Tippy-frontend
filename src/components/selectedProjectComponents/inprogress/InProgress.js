@@ -40,11 +40,15 @@ class InProgress extends Component {
         return (
             <div className='inprogress-container task-container'>
                 <h3><span className='subtitle'>In Progress</span></h3>
-                <InProgressList 
-                    inProgressList={this.props.inProgressList}
-                    toggleSelected={this.props.toggleSelected}/>
-                {this.props.inProgressList.length > 0 &&
-                <button onClick={this.moveTaskToFinished}>Move to Finished</button>
+                {this.props.inProgressList !== undefined &&
+                <div>
+                    <InProgressList 
+                        inProgressList={this.props.inProgressList}
+                        toggleSelected={this.props.toggleSelected}/>
+                    {this.props.inProgressList.length > 0 &&
+                    <button onClick={this.moveTaskToFinished}>Move to Finished</button>
+                    }
+                </div>
                 }
             </div>
         )

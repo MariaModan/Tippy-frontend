@@ -9,10 +9,18 @@ class SelectedProject extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todoList: this.loadTodoList(this.props.projectId)
+            todoList: this.loadTodoList(this.props.projectId),
+            inProgressList: this.loadInProgressList(this.props.projectId),
+            finishedList: this.loadFinishedList(this.props.projectId)
         }
-
-        this.loadTodoList = this.loadTodoList.bind(this)
+    }
+    
+    componentDidUpdate(prevProps){
+        if (this.props.projectId !== prevProps.projectId){
+            this.loadTodoList(this.props.projectId);
+            this.loadInProgressList(this.props.projectId);
+            this.loadFinishedList(this.props.projectId);
+        }
     }
 
     loadTodoList = (projectid) => {
@@ -112,18 +120,18 @@ class SelectedProject extends Component {
                         toggleSelected={this.toggleSelectedTodo}
                         projectid={this.props.projectId} 
                         userid={this.props.userid} 
-                        loadTodoList={this.loadTodoList}/>
-                        {/* loadInProgressList={this.loadInProgressList}/> */}
-                    {/* <InProgress 
+                        loadTodoList={this.loadTodoList}
+                        loadInProgressList={this.loadInProgressList}/>
+                    <InProgress 
                         loadInProgressList={this.loadInProgressList}
-                        inProgressList={this.props.inProgressList}
+                        inProgressList={this.state.inProgressList}
                         projectid={this.props.projectId} 
                         userid={this.props.userid}
                         toggleSelected={this.toggleSelectedInProgress}
                         loadFinishedList={this.loadFinishedList}/>
                     <Finished 
-                        finishedList={this.props.finishedList}
-                        loadFinishedList={this.finishedList}/> */}
+                        finishedList={this.state.finishedList}
+                        loadFinishedList={this.finishedList}/>
                 </div>
                 
             </div>

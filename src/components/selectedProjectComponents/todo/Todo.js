@@ -36,7 +36,6 @@ class Todo extends Component {
     }
 
     render() {
-        console.log(this.props.todoList)
         return (
             <div className='todo-container task-container'>
                 <h3><span className='subtitle'>To do</span></h3>

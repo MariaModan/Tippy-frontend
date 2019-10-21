@@ -4,8 +4,12 @@ import ProjectsInfo from './projectsSectionComponents/ProjectsInfo';
 import SelectedProject from './selectedProjectComponents/SelectedProject';
 import AddProject from './addProject/AddProject';
 import Quote from './quote/Quote';
+<<<<<<< HEAD:src/components/homescreen/Home.js
 import '../../css/home.css';
 import PropTypes from 'prop-types';
+=======
+import '../css/home.css';
+>>>>>>> 18e3c455ca3a17ed39d4cd3b4fb559554006324a:src/components/Home.js
 
 class Home extends React.Component {
     constructor(props){
@@ -19,6 +23,26 @@ class Home extends React.Component {
         }
     }
 
+<<<<<<< HEAD:src/components/homescreen/Home.js
+=======
+    renderWindowSwitch = () => {
+        switch(this.state.rightWindow){
+            case 'selectedProject':
+                return <SelectedProject
+                            projectId={this.state.selectedProject.projectId}
+                            projectTitle={this.state.selectedProject.projectTitle}
+                            userid={this.props.user.userid}/>
+            case 'addProject':
+                return <AddProject 
+                            loadProject={this.loadProject} 
+                            user={this.props.user} 
+                            getProjectList={this.getProjectList}/>
+            default:
+                return <Quote />
+        }
+    }
+
+>>>>>>> 18e3c455ca3a17ed39d4cd3b4fb559554006324a:src/components/Home.js
     loadProject = (projectId, projectTitle) =>{
         this.setState({
             selectedProject:{
@@ -69,6 +93,7 @@ class Home extends React.Component {
             })
         })
         .catch( err => console.log(err))
+<<<<<<< HEAD:src/components/homescreen/Home.js
     }
 
     renderWindowSwitch = () => {
@@ -86,6 +111,8 @@ class Home extends React.Component {
             default:
                 return <Quote />
         }
+=======
+>>>>>>> 18e3c455ca3a17ed39d4cd3b4fb559554006324a:src/components/Home.js
     }
 
     render () {
@@ -93,9 +120,20 @@ class Home extends React.Component {
             <div >
                 <div className='home-bg'></div>
                 <div className='home-container'>
+<<<<<<< HEAD:src/components/homescreen/Home.js
                     <UserInfo user={this.props.user}/>
                     <ProjectsInfo loadProject={this.loadProject} openAddProject={this.openAddProject} projectList={this.state.projectList} getProjectList={this.getProjectList} delProject={this.delProject}
                     />
+=======
+                    <UserInfo 
+                        user={this.props.user}
+                        signOutUser={this.props.signOutUser}/>
+                    <ProjectsInfo 
+                        loadProject={this.loadProject} 
+                        openAddProject={this.openAddProject} 
+                        projectList={this.state.projectList} getProjectList={this.getProjectList} 
+                        delProject={this.delProject}/>
+>>>>>>> 18e3c455ca3a17ed39d4cd3b4fb559554006324a:src/components/Home.js
                     {this.renderWindowSwitch()}
                 </div>
             </div>

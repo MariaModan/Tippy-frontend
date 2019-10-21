@@ -11,7 +11,7 @@ class UserInfo extends Component {
                 <div className='greeting-container'>
                     <h1 className='greeting'>Welcome back</h1>
                     {/* make a collapsable menu with sign out and change password */}
-                    <SignOut />
+                    <SignOut signOutUser={this.props.signOutUser}/>
                 </div>
                 <div className='user-details'>
                     <img src={icon} alt='user icon' />

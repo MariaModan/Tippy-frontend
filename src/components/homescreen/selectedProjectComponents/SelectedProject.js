@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Todo from './todo/Todo';
 import InProgress from './inprogress/InProgress';
 import Finished from './finished/Finished';
-import AddTodo from './todo/AddTodo';
-import '../../css/project.css'
+import AddTodo from './addToDo/AddTodo';
+import '../../../css/project.css';
+import PropTypes from 'prop-types';
 
 class SelectedProject extends Component {
     constructor(props) {
@@ -137,6 +138,19 @@ class SelectedProject extends Component {
             </div>
         )
     }
+}
+
+SelectedProject.propTypes = {
+    projectTitle: PropTypes.string,
+    projectId: PropTypes.number,
+    userid: PropTypes.number,
+    addTodoToList: PropTypes.func,
+    toggleSelected: PropTypes.func,
+    toggleSelectedInProgress: PropTypes.func,
+    toggleSelectedTodo: PropTypes.func,
+    loadTodoList: PropTypes.func,
+    loadInProgressList: PropTypes.func,
+    loadFinishedList: PropTypes.func,
 }
 
 export default SelectedProject;

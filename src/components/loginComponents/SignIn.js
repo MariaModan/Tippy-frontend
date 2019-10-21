@@ -26,24 +26,27 @@ class SignIn extends React.Component {
     onSubmitSignIn = (ev) => {
         ev.preventDefault();
         
-        const reqBody = {
-            email: this.state.email,
-            password: this.state.password
-        }
-
-        fetch('http://localhost:5500/signin',{
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(reqBody)
-        })
-            .then(response => response.json())
-            .then(user => {
-                if (user.userid){
-                    this.props.loadUser(user)
-                }
+        if (this.state.email.length === 0 || this.state.password.length === 0){
+            alert('Please make sure to enter your email address and password before clicking submit')
+        }else{
+            const reqBody = {
+                email: this.state.email,
+                password: this.state.password
+            }
+    
+            fetch('http://localhost:5500/signin',{
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(reqBody)
             })
-            .catch(err => console.log('error signing in user'))
-
+                .then(response => response.json())
+                .then(user => {
+                    if (user.userid){
+                        this.props.loadUser(user)
+                    }
+                })
+                .catch(err => console.log('error signing in user'))
+        }
     }
 
     render() {

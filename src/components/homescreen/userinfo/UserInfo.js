@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import icon from '../../img/profile-icon.svg';
+import icon from '../../../img/profile-icon.svg';
 import SignOut from './SignOut.js';
+import PropTypes from 'prop-types';
 
 
 class UserInfo extends Component {
@@ -19,6 +20,10 @@ class UserInfo extends Component {
             </div>
         )
     }
+}
+
+UserInfo.propTypes = {
+    user: PropTypes.object
 }
 
 export default UserInfo;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoItem from './TodoItem';
+import PropTypes from 'prop-types';
 
 class TodoList extends Component {
     render() {
@@ -13,6 +14,11 @@ class TodoList extends Component {
             </div>
         )
     }
+}
+
+TodoList.propTypes = {
+    todoList: PropTypes.array,
+    toggleSelected: PropTypes.func,
 }
 
 export default TodoList;

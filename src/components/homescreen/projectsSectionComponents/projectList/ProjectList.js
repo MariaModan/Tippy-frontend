@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Project from './Project.js'
+import Project from './Project.js';
+import PropTypes from 'prop-types';
 
 class ProjectList extends Component {
     
@@ -10,6 +11,12 @@ class ProjectList extends Component {
             </div>
         )
     }
+}
+
+ProjectList.propList = {
+    loadProject: PropTypes.func,
+    projectList: PropTypes.array,
+    delProject: PropTypes.func
 }
 
 export default ProjectList;

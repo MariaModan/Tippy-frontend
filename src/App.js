@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SignIn from './components/loginComponents/SignIn';
 import SignUp from './components/loginComponents/SignUp';
-import Home from './components/Home';
+import Home from './components/homescreen/Home';
 
 class App extends React.Component {
   constructor(){

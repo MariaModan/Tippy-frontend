@@ -32,24 +32,28 @@ class SignUp extends React.Component {
     onSubmitRegister = (ev) => {
         ev.preventDefault();
 
-        const reqBody = {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password
-        }
+        if (this.state.email.length === 0 || this.state.password.length === 0 || this.state.name.length === 0){
+            alert('Please make sure to enter your name, email address and password before clicking submit')
+        }else{
+            const reqBody = {
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password
+            }
 
-        fetch('http://localhost:5500/signup',{
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(reqBody)
-        })
-            .then(response => response.json())
-            .then( user => {
-                if(user.userid){
-                    this.props.loadUser(user)
-                }
+            fetch('http://localhost:5500/signup',{
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(reqBody)
             })
-            .catch(err =>  console.log('error signing up user'))
+                .then(response => response.json())
+                .then( user => {
+                    if(user.userid){
+                        this.props.loadUser(user)
+                    }
+                })
+                .catch(err =>  console.log('error signing up user'))
+            }
     }
 
     render(){

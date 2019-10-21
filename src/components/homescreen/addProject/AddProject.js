@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddProject extends Component {
     constructor(props){
@@ -51,6 +52,12 @@ class AddProject extends Component {
             </div>
         )
     }
+}
+
+AddProject.propTypes = {
+    user: PropTypes.object,
+    loadProject: PropTypes.func,
+    getProjectList: PropTypes.func
 }
 
 export default AddProject;

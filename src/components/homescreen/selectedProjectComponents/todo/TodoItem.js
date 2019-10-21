@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
     render() {
@@ -13,6 +14,12 @@ class TodoItem extends Component {
             </div>
         )
     }
+}
+
+TodoItem.propTypes = {
+    toggleSelected: PropTypes.func,
+    taskid: PropTypes.number,
+    title: PropTypes.string
 }
 
 export default TodoItem;

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class FinishedItem extends Component {
     render() {
@@ -8,6 +9,10 @@ class FinishedItem extends Component {
             </div>
         )
     }
+}
+
+FinishedItem.propTypes = {
+    title: PropTypes.string
 }
 
 export default  FinishedItem;

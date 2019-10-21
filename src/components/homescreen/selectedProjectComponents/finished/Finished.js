@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FinishedList from './FinishedList';
+import PropTypes from 'prop-types';
 
 class Finished extends Component {
     render() {
@@ -15,6 +16,10 @@ class Finished extends Component {
             </div>
         )
     }
+}
+
+Finished.propTypes = {
+    finishedList: PropTypes.array
 }
 
 export default Finished;

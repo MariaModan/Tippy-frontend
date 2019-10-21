@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InProgressItem from './InProgressItem';
+import PropTypes from 'prop-types';
 
 class InProgressList extends Component {
     render() {
@@ -14,6 +15,11 @@ class InProgressList extends Component {
             </div>
         )
     }
+}
+
+InProgressList.propTypes = {
+    toggleSelected: PropTypes.func,
+    inProgressList: PropTypes.array
 }
 
 export default InProgressList

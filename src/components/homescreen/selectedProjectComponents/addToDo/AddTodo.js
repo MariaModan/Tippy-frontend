@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddTodo extends Component {
     constructor(props){
@@ -60,6 +61,12 @@ class AddTodo extends Component {
             </form>
         )
     }
+}
+
+AddTodo.propTypes = {
+    projectid: PropTypes.number,
+    userid: PropTypes.number,
+    addTodoToList: PropTypes.func
 }
 
 export default AddTodo;

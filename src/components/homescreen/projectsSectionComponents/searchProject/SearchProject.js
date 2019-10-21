@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import icon from '../../../img/search-icon.svg';
+import icon from '../../../../img/search-icon.svg';
 
 class SearchProject extends Component {
     render() {

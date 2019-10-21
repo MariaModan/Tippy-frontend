@@ -3,9 +3,13 @@ import Todo from './todo/Todo';
 import InProgress from './inprogress/InProgress';
 import Finished from './finished/Finished';
 <<<<<<< HEAD:src/components/homescreen/selectedProjectComponents/SelectedProject.js
+<<<<<<< HEAD:src/components/homescreen/selectedProjectComponents/SelectedProject.js
 import AddTodo from './addToDo/AddTodo';
 import '../../../css/project.css';
 import PropTypes from 'prop-types';
+=======
+import AddTodo from './addTodo/AddTodo';
+>>>>>>> 18e3c455ca3a17ed39d4cd3b4fb559554006324a:src/components/selectedProjectComponents/SelectedProject.js
 =======
 import AddTodo from './addTodo/AddTodo';
 >>>>>>> 18e3c455ca3a17ed39d4cd3b4fb559554006324a:src/components/selectedProjectComponents/SelectedProject.js

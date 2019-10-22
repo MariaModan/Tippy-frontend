@@ -11,7 +11,8 @@ class InProgressList extends Component {
                         key={'inprogress'+item.taskid} 
                         title={item.task_title} 
                         taskid={item.taskid} 
-                        toggleSelected={this.props.toggleSelected}/>)}
+                        toggleSelected={this.props.toggleSelected}
+                        delTask={this.delTask}/>)}
             </div>
         )
     }

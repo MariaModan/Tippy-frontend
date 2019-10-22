@@ -38,12 +38,14 @@ class Todo extends Component {
 
     render() {
         return (
-            <div className='todo-container task-container'>
+            <div className='todo-container lists-container'>
                 <h3><span className='subtitle'>To do</span></h3>
                 {this.props.todoList !== undefined &&
                     <div className='task-subcontainer'> 
-                    <TodoList todoList={this.props.todoList} 
-                            toggleSelected={this.props.toggleSelected}/>
+                    <TodoList 
+                        todoList={this.props.todoList} 
+                        toggleSelected={this.props.toggleSelected}
+                        delTask={this.delTask}/>
                     {this.props.todoList.length > 0 &&
                     <button 
                         className='list-btn' 

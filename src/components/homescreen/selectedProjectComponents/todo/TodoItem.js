@@ -4,13 +4,17 @@ import PropTypes from 'prop-types';
 class TodoItem extends Component {
     render() {
         return (
-            <div className='task'>
-                <label>
+            <div className='task-container'>
+                <label className='task'>
                     <input type='checkbox' 
                         onClick={this.props.toggleSelected.bind(this, this.props.taskid)}/>
                         {this.props.title}
-                    </label>
-
+                </label>
+                <button 
+                    className='del-task'
+                    onClick={this.props.delTask}>
+                        X
+                </button>
             </div>
         )
     }

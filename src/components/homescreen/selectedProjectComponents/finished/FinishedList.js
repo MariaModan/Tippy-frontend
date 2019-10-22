@@ -11,6 +11,7 @@ class FinishedList extends Component {
                         key={'finished'+item.taskid} 
                         title={item.task_title} 
                         taskid={item.taskid} 
+                        delTask={this.delTask}
                         />) } 
             </div>
         )

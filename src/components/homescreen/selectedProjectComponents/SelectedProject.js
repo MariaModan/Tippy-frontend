@@ -106,6 +106,10 @@ class SelectedProject extends Component {
         })        
     }
 
+    delTask = () => {
+        console.log('del');
+    }
+
     render() {
         return (
             <div className='selected-project'>
@@ -121,17 +125,20 @@ class SelectedProject extends Component {
                         projectid={this.props.projectId} 
                         userid={this.props.userid} 
                         loadTodoList={this.loadTodoList}
-                        loadInProgressList={this.loadInProgressList}/>
+                        loadInProgressList={this.loadInProgressList}
+                        delTask={this.delTask}/>
                     <InProgress 
                         loadInProgressList={this.loadInProgressList}
                         inProgressList={this.state.inProgressList}
                         projectid={this.props.projectId} 
                         userid={this.props.userid}
                         toggleSelected={this.toggleSelectedInProgress}
-                        loadFinishedList={this.loadFinishedList}/>
+                        loadFinishedList={this.loadFinishedList}
+                        delTask={this.delTask}/>
                     <Finished 
                         finishedList={this.state.finishedList}
-                        loadFinishedList={this.finishedList}/>
+                        loadFinishedList={this.finishedList}
+                        delTask={this.delTask}/>
                 </div>
                 
             </div>

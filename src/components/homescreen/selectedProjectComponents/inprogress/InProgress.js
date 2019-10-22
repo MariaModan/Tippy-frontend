@@ -39,13 +39,14 @@ class InProgress extends Component {
 
     render() {
         return (
-            <div className='inprogress-container task-container'>
+            <div className='inprogress-container lists-container'>
                 <h3><span className='subtitle'>In Progress</span></h3>
                 {this.props.inProgressList !== undefined &&
                 <div>
                     <InProgressList 
                         inProgressList={this.props.inProgressList}
-                        toggleSelected={this.props.toggleSelected}/>
+                        toggleSelected={this.props.toggleSelected}
+                        delTask={this.delTask}/>
                     {this.props.inProgressList.length > 0 &&
                     <button 
                         className='list-btn'

@@ -248,7 +248,7 @@
     padding: 2em;
 }
 
-.task-container {
+.lists-container {
     background-color: #6BB5D8;  
     border-radius: 10px;
     overflow: auto;
@@ -271,10 +271,26 @@
     font-size:1.2em;
 }
 
+.task-container {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    justify-content: center;
+    align-items: center;  
+    margin: 0.5em 0.5em;
+}
+
 .task {
     text-align:left;
     font-size: 1.2em;
-    margin: 0 2em;
+    margin-left: 1.5em;
+}
+
+.del-task {
+    height: 1.7em;
+    margin-left: auto;
+    border-radius: 7px;
+    margin-right: 1em;
+    text-align: center;
 }
 
 .list-btn {

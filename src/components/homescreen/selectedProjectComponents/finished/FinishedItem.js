@@ -4,8 +4,16 @@ import PropTypes from 'prop-types';
 class FinishedItem extends Component {
     render() {
         return (
-            <div className='task'>
-                <label><input type='checkbox'></input>{this.props.title}</label>
+            <div className='task-container'>
+                <label className='task'>
+                    <input type='checkbox'></input>
+                    {this.props.title}
+                </label>
+                <button 
+                    className='del-task'
+                    onClick={this.props.delTask}>
+                        X
+                </button>
             </div>
         )
     }

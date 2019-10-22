@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
-import SignIn from './components/loginComponents/SignIn';
-import SignUp from './components/loginComponents/SignUp';
-import Home from './components/homescreen/Home';
+import '../css/App.css';
+import SignIn from './loginComponents/SignIn';
+import SignUp from './loginComponents/SignUp';
+import Home from './homescreen/Home';
 
 class App extends React.Component {
   constructor(){

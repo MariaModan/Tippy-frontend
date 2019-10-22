@@ -19,8 +19,11 @@ class ProjectsInfo extends Component {
                         <img src={icon} alt='add project icon' /> 
                         Add Project
                     </button>
-                <SearchProject />
-                <ProjectList loadProject={this.props.loadProject} projectList={this.props.projectList} delProject={this.props.delProject}/>                
+                {/* <SearchProject /> */}
+                <ProjectList 
+                    loadProject={this.props.loadProject} 
+                    projectList={this.props.projectList} 
+                    delProject={this.props.delProject}/>                
             </div>
         )
     }

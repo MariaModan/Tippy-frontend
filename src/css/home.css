@@ -30,7 +30,10 @@
 .userinfo-container {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    background:#d4fad4;
+    background: rgb(184, 219, 238);
+    border: 5px solid #6BB5D8;
+    border-top: 10px solid #6BB5D8;
+    border-left: 10px solid #6BB5D8;
     border-radius: 10px 0 0 0;
     margin: 0;
     padding: 0;
@@ -50,6 +53,7 @@
 .signout{
     font-size: 1.1em;
     text-align: right;
+    cursor: pointer;
 }
 
 .user-details {
@@ -75,8 +79,12 @@
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 8;
-    background: lightgreen;
+    background: rgb(184, 219, 238);
+    border: 5px solid #6BB5D8;
+    border-bottom: 10px solid #6BB5D8;
+    border-left: 10px solid #6BB5D8;
     border-radius: 0 0 0 10px;
+    overflow: auto;
 }
 
 .add-project-btn {
@@ -109,22 +117,22 @@
     cursor: pointer;
 }
 
-.project-list {
+.project {
     display: grid;
     grid-template-columns: 6fr 1fr;
     justify-content: center;
     align-items: center;
 }
 
-.project-list > button {
+.project > button {
     height: 2em;
     margin-left: auto;
     margin-right: 2em;
     border-radius: 7px;
 }
 
-.project-list:nth-child(odd){
-    background: rgba(50, 205, 50, 0.7)
+.project:nth-child(odd){
+    background: #6BB5D8;
 }
 
 .project-titles{
@@ -152,7 +160,7 @@
 }
 
 .add-project-container-inner {
-    border: 2px solid #333;
+    border: 5px solid #333;
     border-radius: 20px;
     padding:0.5em 1em 1em 1em;
     background-color: rgba(255, 255, 255, 0.8);
@@ -206,8 +214,12 @@
     grid-column-start: 2;
     grid-row-start: 1;
     grid-row-end: 8;
-    background: #ecfeec;
+    background: rgb(184, 219, 238);
     border-radius: 0 10px 10px 0;
+    border-left: 5px solid #6BB5D8;
+    border-right: 10px solid #6BB5D8;
+    border-top: 10px solid #6BB5D8;
+    border-bottom: 10px solid #6BB5D8;
 }
 
 .selected-project > header {
@@ -237,12 +249,13 @@
 }
 
 .task-container {
-    background-color: #90ee90;  
+    background-color: #6BB5D8;  
     border-radius: 10px;
+    overflow: auto;
 }
 
 .todo-container{
-    grid-column: 1/2;
+    grid-column: 1/2; 
 }
 
 .inprogress-container{
@@ -264,8 +277,11 @@
     margin: 0 2em;
 }
 
-.task-container > button {
-    margin-top: 2em;
-    border-radius: 5px;
+.list-btn {
+    align-self: flex-end;
     height: 2em;
+    border-radius: 4px;
+    margin-top: 1em;
+    font-size: 0.9em;
 }
+

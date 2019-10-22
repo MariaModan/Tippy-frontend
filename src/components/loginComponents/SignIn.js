@@ -96,7 +96,7 @@ class SignIn extends React.Component {
 
 }
 
-SignIp.propTypes = {
+SignIn.propTypes = {
     onRouteChange: PropTypes.func,
     loadUser: PropTypes.func
 }

@@ -47,7 +47,11 @@ class InProgress extends Component {
                         inProgressList={this.props.inProgressList}
                         toggleSelected={this.props.toggleSelected}/>
                     {this.props.inProgressList.length > 0 &&
-                    <button onClick={this.moveTaskToFinished}>Move to Finished</button>
+                    <button 
+                        className='list-btn'
+                        onClick={this.moveTaskToFinished}>
+                            Move to Done
+                    </button>
                     }
                 </div>
                 }

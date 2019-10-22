@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Project = (props) => {
     return (
-        <div className='project-list'>
+        <div className='project'>
             <p className='project-titles' onClick={props.loadProject.bind(this, props.projectId, props.title)}>{props.title}</p>
             <button onClick={props.delProject.bind(this, props.projectId)}>X</button>    
         </div>

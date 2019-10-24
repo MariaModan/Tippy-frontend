@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class FinishedItem extends Component {
-    render() {
-        return (
-            <div className='task-container'>
-                <label className='task'>
-                    <input type='checkbox'></input>
-                    {this.props.title}
-                </label>
-                <button 
-                    className='del-task'
-                    onClick={this.props.delTask}>
-                        X
-                </button>
-            </div>
-        )
-    }
+const FinishedItem = ({taskid, title, delTask }) => {
+    return (
+        <div className='task-container'>
+            <label className='task'>
+                <input type='checkbox'></input>
+                {title}
+            </label>
+            <button 
+                className='del-task'
+                onClick={delTask.bind(this, taskid)}>
+                    X
+            </button>
+        </div>
+    )
+    
 }
 
 FinishedItem.propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
+    taskid: PropTypes.number,
+    delTask: PropTypes.func
 }
 
 export default  FinishedItem;

@@ -1,27 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class TodoItem extends Component {
-    render() {
-        return (
-            <div className='task-container'>
-                <label className='task'>
-                    <input type='checkbox' 
-                        onClick={this.props.toggleSelected.bind(this, this.props.taskid)}/>
-                        {this.props.title}
-                </label>
-                <button 
-                    className='del-task'
-                    onClick={this.props.delTask}>
-                        X
-                </button>
-            </div>
-        )
-    }
+const TodoItem = ({toggleSelected, taskid, title, delTask }) => {
+    return (
+        <div className='task-container'>
+            <label className='task'>
+                <input type='checkbox' 
+                    onClick={toggleSelected.bind(this, taskid)}/>
+                    {title}
+            </label>
+            <button 
+                className='del-task'
+                onClick={delTask.bind(this, taskid)}>
+                    X
+            </button>
+        </div>
+    )
 }
 
 TodoItem.propTypes = {
     toggleSelected: PropTypes.func,
+    delTask: PropTypes.func,
     taskid: PropTypes.number,
     title: PropTypes.string
 }

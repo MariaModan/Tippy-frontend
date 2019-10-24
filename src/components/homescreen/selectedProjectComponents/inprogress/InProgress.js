@@ -3,10 +3,7 @@ import InProgressList from './InProgressList';
 import PropTypes from 'prop-types';
 
 class InProgress extends Component {
-    constructor (props) {
-        super(props);
-    }
-
+    
     moveTaskToFinished = () => {
         this.props.inProgressList.map( task => {
             let body = {};
@@ -33,8 +30,11 @@ class InProgress extends Component {
             })
             .catch(err => console.log(err))
         }
-        })
-        
+        })  
+    }
+
+    delTask = (taskid) => {
+        console.log(taskid)
     }
 
     render() {
@@ -46,7 +46,7 @@ class InProgress extends Component {
                     <InProgressList 
                         inProgressList={this.props.inProgressList}
                         toggleSelected={this.props.toggleSelected}
-                        delTask={this.delTask}/>
+                        delTask={this.props.delTask}/>
                     {this.props.inProgressList.length > 0 &&
                     <button 
                         className='list-btn'
@@ -67,7 +67,8 @@ InProgress.propTypes = {
     loadInProgressList: PropTypes.func,
     loadFinishedList: PropTypes.func,
     projectid: PropTypes.number,
-    userid: PropTypes.number
+    userid: PropTypes.number,
+    delTask: PropTypes.func
 }
 
 export default InProgress;

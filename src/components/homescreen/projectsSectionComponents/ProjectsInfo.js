@@ -5,10 +5,11 @@ import icon from '../../../img/add-project-icon.svg';
 import PropTypes from 'prop-types';
 
 class ProjectsInfo extends Component {
+
     componentDidMount(){
         this.props.getProjectList()
     }
-    
+
     render() {
         return (
             <div className='projectsinfo-container'>
@@ -19,7 +20,7 @@ class ProjectsInfo extends Component {
                         <img src={icon} alt='add project icon' /> 
                         Add Project
                     </button>
-                {/* <SearchProject /> */}
+                {/* <SearchProject/> */}
                 <ProjectList 
                     loadProject={this.props.loadProject} 
                     projectList={this.props.projectList} 

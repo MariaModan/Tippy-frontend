@@ -97,9 +97,11 @@ class Home extends React.Component {
                         user={this.props.user}
                         signOutUser={this.props.signOutUser}/>
                     <ProjectsInfo 
+                        userid={this.props.user.userid}
                         loadProject={this.loadProject} 
                         openAddProject={this.openAddProject} 
-                        projectList={this.state.projectList} getProjectList={this.getProjectList} 
+                        projectList={this.state.projectList} 
+                        getProjectList={this.getProjectList}
                         delProject={this.delProject}/>
                     {this.renderWindowSwitch()}
                 </div>

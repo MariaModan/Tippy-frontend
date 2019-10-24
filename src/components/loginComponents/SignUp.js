@@ -32,27 +32,68 @@ class SignUp extends React.Component {
     onSubmitRegister = (ev) => {
         ev.preventDefault();
 
-        if (this.state.email.length === 0 || this.state.password.length === 0 || this.state.name.length === 0){
-            alert('Please make sure to enter your name, email address and password before clicking submit')
+        const letters = /[A-Za-z]/;
+        const onlyLetters = /^[a-zA-Z]+$/;
+        const numbers = /[0-9]/;
+  
+        if (this.state.email.length === 0){
+
+            alert('Please make sure to enter your name, email address and password before clicking submit.')
+
+        }else if (!this.state.password.match(letters) || !this.state.password.match(numbers) || this.state.password.length<6) {
+            this.setState({
+                password: ''
+            })
+
+            alert('Your password must be at least 6 characters long, and include at least a letter and a number.')
+
+        }else if (this.state.name.length < 2 || !this.state.name.match(onlyLetters)){
+
+            this.setState({
+                name: ''
+            })
+
+            alert('Your name must be at least 2 characters long and use only letters.')
+
         }else{
+
             const reqBody = {
                 name: this.state.name,
                 email: this.state.email,
                 password: this.state.password
             }
 
-            fetch('http://localhost:5500/signup',{
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(reqBody)
+            fetch('http://localhost:5500/registeredUser',{
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({'email': this.state.email})
             })
-                .then(response => response.json())
-                .then( user => {
-                    if(user.userid){
-                        this.props.loadUser(user)
-                    }
+            .then(response => response.json())
+            .then(data => {
+
+                if(data === this.state.email){
+                    
+                    this.setState({
+                        email: ''
+                    })
+
+                    alert('This email adress is already taken.')
+                    
+                }else{
+                    fetch('http://localhost:5500/signup',{
+                    method: 'post',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(reqBody)
                 })
-                .catch(err =>  console.log('error signing up user'))
+                    .then(response => response.json())
+                    .then( user => {
+                        if(user.userid){
+                            this.props.loadUser(user)
+                        }
+                    })
+                    .catch(err =>  console.log('error signing up user'))
+                    }
+            })     
             }
     }
 
@@ -73,6 +114,7 @@ class SignUp extends React.Component {
                             name='name' 
                             id='name' 
                             placeholder=' Name'
+                            value={this.state.name}
                             onChange={this.onNameChange}/>
 
                         <label htmlFor='email'/>
@@ -81,6 +123,7 @@ class SignUp extends React.Component {
                             name='email' 
                             id='email' 
                             placeholder=' Email'
+                            value={this.state.email}
                             onChange={this.onEmailChange}/>
 
                         <label htmlFor='password'/>
@@ -89,6 +132,7 @@ class SignUp extends React.Component {
                             name='password' 
                             id='password' 
                             placeholder=' Password'
+                            value={this.state.password}
                             onChange={this.onPasswordChange}/>
 
                         <button 

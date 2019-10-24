@@ -3,10 +3,6 @@ import TodoList from './TodoList';
 import PropTypes from 'prop-types';
 
 class Todo extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     moveTaskToInProgress = () => {
         this.props.todoList.map( task => {
             let body ={};
@@ -29,21 +25,23 @@ class Todo extends Component {
                 .then(data => {
                     this.props.loadTodoList(this.props.projectid);
                     this.props.loadInProgressList(this.props.projectid)
-
                 })
-                .catch(err => console.log(err))
-            
+                .catch(err => console.log(err))            
         })
     }
 
+    
+
     render() {
         return (
-            <div className='todo-container task-container'>
+            <div className='todo-container lists-container'>
                 <h3><span className='subtitle'>To do</span></h3>
                 {this.props.todoList !== undefined &&
                     <div className='task-subcontainer'> 
-                    <TodoList todoList={this.props.todoList} 
-                            toggleSelected={this.props.toggleSelected}/>
+                    <TodoList 
+                        todoList={this.props.todoList} 
+                        toggleSelected={this.props.toggleSelected}
+                        delTask={this.props.delTask}/>
                     {this.props.todoList.length > 0 &&
                     <button 
                         className='list-btn' 
@@ -63,6 +61,7 @@ Todo.propTypes = {
     toggleSelected: PropTypes.func,
     loadInProgressList: PropTypes.func,
     loadTodoList: PropTypes.func,
+    delTask: PropTypes.func
 }
 
 export default Todo;

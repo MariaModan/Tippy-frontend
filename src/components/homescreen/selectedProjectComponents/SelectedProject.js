@@ -106,6 +106,63 @@ class SelectedProject extends Component {
         })        
     }
 
+    delTaskTodo = (taskid) => {
+        const body = JSON.stringify({
+            taskid: taskid
+        })
+
+        fetch('http://localhost:5500/deltask-Todo',{
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(delTaskid => {
+            this.setState({
+                todoList: this.state.todoList.filter(task => task.taskid !== delTaskid)
+            })
+        })
+        .catch( err => console.log(err))
+    }
+
+    delTaskInprogress = (taskid) => {
+        const body = JSON.stringify({
+            taskid: taskid
+        })
+
+        fetch('http://localhost:5500/deltask-Inprogress',{
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(delTaskid => {
+            this.setState({
+                inProgressList: this.state.inProgressList.filter(task => task.taskid !== delTaskid)
+            })
+        })
+        .catch( err => console.log(err))
+    }
+
+    delTaskFinished = (taskid) => {
+        const body = JSON.stringify({
+            taskid: taskid
+        })
+
+        fetch('http://localhost:5500/deltask-Finished',{
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: body
+        })
+        .then(response => response.json())
+        .then(delTaskid => {
+            this.setState({
+                finishedList: this.state.finishedList.filter(task => task.taskid !== delTaskid)
+            })
+        })
+        .catch( err => console.log(err))
+    }
+
     render() {
         return (
             <div className='selected-project'>
@@ -121,17 +178,23 @@ class SelectedProject extends Component {
                         projectid={this.props.projectId} 
                         userid={this.props.userid} 
                         loadTodoList={this.loadTodoList}
-                        loadInProgressList={this.loadInProgressList}/>
+                        loadInProgressList={this.loadInProgressList}
+                        delTask={this.delTaskTodo}
+                        />
                     <InProgress 
                         loadInProgressList={this.loadInProgressList}
                         inProgressList={this.state.inProgressList}
                         projectid={this.props.projectId} 
                         userid={this.props.userid}
                         toggleSelected={this.toggleSelectedInProgress}
-                        loadFinishedList={this.loadFinishedList}/>
+                        loadFinishedList={this.loadFinishedList}
+                        delTask={this.delTaskInprogress}
+                        />
                     <Finished 
                         finishedList={this.state.finishedList}
-                        loadFinishedList={this.finishedList}/>
+                        loadFinishedList={this.finishedList}
+                        delTask={this.delTaskFinished}
+                        />
                 </div>
                 
             </div>

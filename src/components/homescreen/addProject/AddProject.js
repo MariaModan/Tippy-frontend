@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AddProject extends Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state= {
             projectTitle: ''
         }
@@ -17,21 +17,25 @@ class AddProject extends Component {
 
     submitNewProject = (event) => {
         event.preventDefault();
-        const body = JSON.stringify({
-            projectTitle: this.state.projectTitle,
-            userid: this.props.user.userid
-        });
-        //TO DO
-        //add verification that there is project name, otherwise return
-        fetch('https://tippy-task-manager-backend.herokuapp.com/addproject', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: body
-        }).then( res => res.json())
-        .then( projectid => {
-            this.props.loadProject(projectid, this.state.projectTitle);
-            this.props.getProjectList();
-        })
+
+        if(this.state.projectTitle.length === 0){
+            alert('Please choose a name for your project.')
+        }else {
+            const body = JSON.stringify({
+                projectTitle: this.state.projectTitle,
+                userid: this.props.user.userid
+            });
+            
+            fetch('https://tippy-task-manager-backend.herokuapp.com/addproject', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: body
+            }).then( res => res.json())
+            .then( projectid => {
+                this.props.loadProject(projectid, this.state.projectTitle);
+                this.props.getProjectList();
+            })
+        }   
     }
 
     render() {

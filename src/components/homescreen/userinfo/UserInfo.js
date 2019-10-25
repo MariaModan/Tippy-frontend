@@ -10,7 +10,6 @@ class UserInfo extends Component {
             <div className='userinfo-container'>
                 <div className='greeting-container'>
                     <h1 className='greeting'>Welcome back</h1>
-                    {/* make a collapsable menu with sign out and change password */}
                     <SignOut signOutUser={this.props.signOutUser}/>
                 </div>
                 <div className='user-details'>

@@ -28,7 +28,7 @@ class SelectedProject extends Component {
             projectid: projectid
         });
 
-        fetch('http://localhost:5500/listtodo', {
+        fetch('https://tippy-task-manager-backend.herokuapp.com/listtodo', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: body
@@ -46,7 +46,7 @@ class SelectedProject extends Component {
             projectid: projectid
         });
         
-        fetch('http://localhost:5500/listinprogress', {
+        fetch('https://tippy-task-manager-backend.herokuapp.com/listinprogress', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: body
@@ -64,7 +64,7 @@ class SelectedProject extends Component {
             projectid: projectid
         });
 
-        fetch('http://localhost:5500/listfinished', {
+        fetch('https://tippy-task-manager-backend.herokuapp.com/listfinished', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: body
@@ -111,7 +111,7 @@ class SelectedProject extends Component {
             taskid: taskid
         })
 
-        fetch('http://localhost:5500/deltask-Todo',{
+        fetch('https://tippy-task-manager-backend.herokuapp.com/deltask-Todo',{
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: body
@@ -130,7 +130,7 @@ class SelectedProject extends Component {
             taskid: taskid
         })
 
-        fetch('http://localhost:5500/deltask-Inprogress',{
+        fetch('https://tippy-task-manager-backend.herokuapp.com/deltask-Inprogress',{
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: body
@@ -149,7 +149,7 @@ class SelectedProject extends Component {
             taskid: taskid
         })
 
-        fetch('http://localhost:5500/deltask-Finished',{
+        fetch('https://tippy-task-manager-backend.herokuapp.com/deltask-Finished',{
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: body

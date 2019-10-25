@@ -35,7 +35,7 @@ class AddTodo extends Component {
             newTask: ''
         })
         
-        fetch('http://localhost:5500/addtodo', {
+        fetch('https://tippy-task-manager-backend.herokuapp.com/addtodo', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: body

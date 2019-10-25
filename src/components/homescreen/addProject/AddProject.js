@@ -23,7 +23,7 @@ class AddProject extends Component {
         });
         //TO DO
         //add verification that there is project name, otherwise return
-        fetch('http://localhost:5500/addproject', {
+        fetch('https://tippy-task-manager-backend.herokuapp.com/addproject', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: body

@@ -39,7 +39,7 @@ class Home extends React.Component {
     getProjectList = () => {
         const body = JSON.stringify({userid: this.props.user.userid})
 
-        fetch('http://localhost:5500/listprojects',{
+        fetch('https://tippy-task-manager-backend.herokuapp.com/listprojects',{
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: body
@@ -55,7 +55,7 @@ class Home extends React.Component {
     delProject = (projectid) => {
         const body = JSON.stringify({projectid: projectid})
 
-        fetch('http://localhost:5500/delproject',{
+        fetch('https://tippy-task-manager-backend.herokuapp.com/delproject',{
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: body

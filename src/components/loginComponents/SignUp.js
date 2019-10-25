@@ -63,7 +63,7 @@ class SignUp extends React.Component {
                 password: this.state.password
             }
 
-            fetch('http://localhost:5500/registeredUser',{
+            fetch('https://tippy-task-manager-backend.herokuapp.com/registeredUser',{
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({'email': this.state.email})
@@ -80,7 +80,7 @@ class SignUp extends React.Component {
                     alert('This email adress is already taken.')
                     
                 }else{
-                    fetch('http://localhost:5500/signup',{
+                    fetch('https://tippy-task-manager-backend.herokuapp.com/signup',{
                     method: 'post',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(reqBody)

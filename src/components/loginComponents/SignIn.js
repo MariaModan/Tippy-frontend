@@ -40,9 +40,12 @@ class SignIn extends React.Component {
                 body: JSON.stringify(reqBody)
             })
                 .then(response => response.json())
-                .then(user => {
-                    if (user.userid){
-                        this.props.loadUser(user)
+                .then(data => {
+                    if(data === 'invalid credentials'){
+                        alert('Invalid credentials.')
+                    }
+                    if (data.userid){
+                        this.props.loadUser(data)
                     }
                 })
                 .catch(err => console.log('error signing in user'))

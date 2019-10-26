@@ -1,3 +1,18 @@
+
+
+This project allows users to make an account and keep track of their tasks for various projects.
+
+At the moment this app is for desktop and tablet use only.
+
+The backend server can be found here: https://github.com/MariaModan/Tippy-backend
+
+
+
+
+
+
+----------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

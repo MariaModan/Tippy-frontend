@@ -1,4 +1,4 @@
-#Tippy
+# Tippy
 
 This project allows users to make an account and keep track of their tasks for various projects.
 

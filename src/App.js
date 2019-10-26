@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/App.css';
+import './css/App.css';
 import SignIn from './components/loginComponents/SignIn';
 import SignUp from './components/loginComponents/SignUp';
 import Home from './components/homescreen/Home';

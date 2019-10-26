@@ -15,7 +15,7 @@ class Todo extends Component {
                 })
             }
             
-            fetch('http://localhost:5500/addInProgress', {
+            fetch('https://tippy-task-manager-backend.herokuapp.com/addInProgress', {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',

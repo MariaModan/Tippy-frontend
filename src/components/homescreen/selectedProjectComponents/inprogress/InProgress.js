@@ -16,7 +16,7 @@ class InProgress extends Component {
                     task_title: task.task_title
             })
 
-            fetch('http://localhost:5500/addFinished', {
+            fetch('https://tippy-task-manager-backend.herokuapp.com/addFinished', {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
